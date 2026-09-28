@@ -1,4 +1,4 @@
-import { todoLinks } from "@/config/links";
+import { aboutLinks } from "@/config/links";
 
 export type Role = {
   title: string;
@@ -27,7 +27,7 @@ export const experience: Role[] = [
   {
     title: "AI Engineer Intern",
     org: "Innowhyte",
-    orgUrl: todoLinks.innowhyte,
+    orgUrl: aboutLinks.innowhyte,
     place: "Remote",
     start: "Summer 2026",
     end: "Present",

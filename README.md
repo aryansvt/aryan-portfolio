@@ -17,7 +17,7 @@ npm run preview    # serve out/ on http://localhost:3000
 
 | What | File |
 |---|---|
-| Links still to fill in (Innowhyte, lab page, Letterboxd, Goodreads) | `src/config/links.ts` |
+| About text links (Innowhyte, lab page, Letterboxd, Goodreads) | `src/config/links.ts` |
 | Email, LinkedIn, GitHub, resume path | `src/config/links.ts` |
 | Name, title, tagline, SEO description, site URL | `src/config/site.ts` |
 | Experience, projects, skills | `src/content/*.ts` |
@@ -26,11 +26,11 @@ npm run preview    # serve out/ on http://localhost:3000
 | Social preview image | `src/app/og.png/route.tsx` |
 | Resume PDF | `public/aryan-achar-resume.pdf` |
 
-### TODO links
+### About links
 
-The four links in `todoLinks` are empty strings for now. While a link is empty, its words still get the highlight but aren't clickable, so nothing on the site points nowhere. Paste a URL in and it becomes a link.
+The highlighted words in the About text use the URLs in `aboutLinks`. If you set one to an empty string, its words keep the highlight but stop being clickable, so the site never shows a dead link.
 
-Once `letterboxd` is set, "watching films" opens Letterboxd in a new tab and plays the film effect when you come back to the tab. Until then, clicking the words plays the effect right away.
+"watching films" opens Letterboxd in a new tab and plays the film effect when you come back to the tab. If `letterboxd` is empty, clicking the words plays the effect right away.
 
 ### Site URL
 

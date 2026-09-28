@@ -15,5 +15,5 @@ next-env.d.ts
 .DS_Store
 npm-debug.log*
 
-# source resume, the shipped copy lives in public/
-/AryanResumeFinal-1.pdf
+# source resumes, the shipped copy lives in public/
+/AryanResumeFinal-*.pdf
