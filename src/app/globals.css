@@ -1,1 +1,390 @@
 @import "tailwindcss";
+
+@theme {
+  --color-ink: #0d090e;
+  --color-bruise: #1a1220;
+  --color-plum: #4b1d5e;
+  --color-wine: #8e2446;
+  --color-blush: #f1b8c8;
+  --color-bone: #efe6ec;
+  --color-body: #d8ccd5;
+  --color-mist: #a99aa7;
+  --color-track: #2e2033;
+  --color-ring: #5b4661;
+}
+
+@theme inline {
+  --font-display: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-newsreader), ui-serif, Georgia, serif;
+}
+
+@layer base {
+  html {
+    background: var(--color-ink);
+    color-scheme: dark;
+    scrollbar-color: var(--color-plum) var(--color-ink);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  body {
+    min-height: 100dvh;
+    color: var(--color-body);
+    font-family: var(--font-serif);
+    font-optical-sizing: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* plum glow behind the sidebar, wine glow bottom right */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background:
+      radial-gradient(58rem 46rem at 6% -10%, rgb(75 29 94 / 0.42), transparent 62%),
+      radial-gradient(50rem 42rem at 104% 110%, rgb(142 36 70 / 0.2), transparent 60%);
+  }
+
+  ::selection {
+    background: var(--color-wine);
+    color: var(--color-bone);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-blush);
+    outline-offset: 3px;
+    border-radius: 3px;
+  }
+}
+
+@layer components {
+  /* type */
+  .t-name {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-variation-settings: "wdth" 125;
+    font-size: clamp(3rem, 15vw, 4.5rem);
+    line-height: 0.92;
+    letter-spacing: -0.015em;
+    color: var(--color-bone);
+  }
+
+  @media (min-width: 1024px) {
+    .t-name {
+      font-size: clamp(2.75rem, min(5.2vw, 9vh), 4.5rem);
+    }
+  }
+
+  .t-section {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-variation-settings: "wdth" 118;
+    font-size: 1.5rem;
+    line-height: 1.2;
+    letter-spacing: -0.005em;
+    color: var(--color-bone);
+  }
+
+  .t-item {
+    font-family: var(--font-display);
+    font-weight: 650;
+    font-variation-settings: "wdth" 108;
+    font-size: 1.3125rem;
+    line-height: 1.3;
+    color: var(--color-bone);
+  }
+
+  .t-label {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 0.875rem;
+    line-height: 1.4;
+    color: var(--color-mist);
+  }
+
+  .t-body {
+    font-family: var(--font-serif);
+    font-size: 1.125rem;
+    line-height: 1.7;
+    color: var(--color-body);
+  }
+
+  /* highlighter links: a wine band that rises on hover */
+  .hl {
+    color: var(--color-bone);
+    text-decoration: none;
+    background-image: linear-gradient(rgb(142 36 70 / 0.55), rgb(142 36 70 / 0.55));
+    background-repeat: no-repeat;
+    background-size: 100% 0.42em;
+    background-position: 0 76%;
+    padding-inline: 0.08em;
+    border-radius: 2px;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+    transition:
+      background-size 220ms ease,
+      background-position 220ms ease;
+  }
+
+  a.hl:hover,
+  a.hl:focus-visible {
+    background-size: 100% 100%;
+    background-position: 0 100%;
+  }
+
+  /* easter egg triggers */
+  .egg {
+    font: inherit;
+    color: var(--color-bone);
+    background: none;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    text-decoration: underline dotted;
+    text-decoration-color: rgb(241 184 200 / 0.45);
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 0.22em;
+    transition:
+      color 180ms ease,
+      text-decoration-color 180ms ease;
+  }
+
+  .egg:hover,
+  .egg[aria-pressed="true"] {
+    color: var(--color-blush);
+    text-decoration-color: var(--color-blush);
+  }
+
+  .tag {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 0.75rem;
+    line-height: 1.5;
+    letter-spacing: 0.01em;
+    color: #e6d2de;
+    background: rgb(75 29 94 / 0.4);
+    border-radius: 3px;
+    padding: 0.125rem 0.5rem;
+  }
+
+  /* sidebar route line */
+  .route {
+    --stop: clamp(2.1rem, 5.2vh, 2.75rem);
+    --dot: 11px;
+    position: relative;
+  }
+
+  .route-track {
+    position: absolute;
+    left: calc(var(--dot) / 2 - 1px);
+    top: calc(var(--stop) / 2);
+    bottom: calc(var(--stop) / 2);
+    width: 2px;
+    border-radius: 2px;
+    background: var(--color-track);
+    transform-origin: top;
+    overflow: hidden;
+  }
+
+  .route-fill {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, var(--color-wine), var(--color-blush));
+    transform-origin: top;
+    transform: scaleY(var(--progress, 0));
+    transition: transform 140ms linear;
+  }
+
+  .route-stops {
+    position: relative;
+  }
+
+  .route-stop {
+    display: flex;
+    align-items: center;
+    gap: 1.1rem;
+    height: var(--stop);
+    width: fit-content;
+    padding-right: 0.5rem;
+    text-decoration: none;
+  }
+
+  .route-dot {
+    flex: none;
+    width: var(--dot);
+    height: var(--dot);
+    border-radius: 999px;
+    background: var(--color-ink);
+    border: 2px solid var(--color-ring);
+    transition:
+      background-color 250ms ease,
+      border-color 250ms ease,
+      box-shadow 250ms ease;
+  }
+
+  .route-stop[data-passed="true"] .route-dot {
+    border-color: var(--color-wine);
+  }
+
+  .route-stop[aria-current="true"] .route-dot {
+    background: var(--color-blush);
+    border-color: var(--color-blush);
+    box-shadow: 0 0 0 4px rgb(142 36 70 / 0.5);
+  }
+
+  .route-label {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 450;
+    font-variation-settings: "wdth" 100;
+    color: var(--color-mist);
+    transition:
+      color 200ms ease,
+      font-weight 300ms ease,
+      font-variation-settings 300ms ease;
+  }
+
+  .route-stop:hover .route-label {
+    color: var(--color-bone);
+    font-variation-settings: "wdth" 112;
+  }
+
+  .route-stop[aria-current="true"] .route-label {
+    color: var(--color-bone);
+    font-weight: 700;
+    font-variation-settings: "wdth" 125;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .route-track {
+      animation: route-draw 900ms cubic-bezier(0.65, 0, 0.25, 1) 150ms both;
+    }
+
+    .route-stops > li {
+      animation: stop-in 450ms ease-out both;
+      animation-delay: calc(200ms + var(--i) * 190ms);
+    }
+  }
+
+  /* experience rail, echoes the route line */
+  .rail-item {
+    --dot: 11px;
+    --dot-top: 0.25rem;
+    --rail-x: calc(var(--dot) / 2 - 1px);
+    position: relative;
+    display: grid;
+    grid-template-columns: 1.75rem minmax(0, 1fr);
+    grid-template-areas:
+      "mark date"
+      "mark body";
+    padding-bottom: 3.25rem;
+  }
+
+  .rail-item:last-child {
+    padding-bottom: 0;
+  }
+
+  .rail-item::before {
+    content: "";
+    position: absolute;
+    left: var(--rail-x);
+    top: calc(var(--dot-top) + var(--dot) / 2);
+    width: 2px;
+    height: 100%;
+    background: var(--color-track);
+  }
+
+  .rail-item[data-live="true"]::before {
+    background: var(--color-wine);
+  }
+
+  .rail-item:last-child::before {
+    display: none;
+  }
+
+  .rail-date {
+    grid-area: date;
+    margin-bottom: 0.35rem;
+  }
+
+  .rail-mark {
+    grid-area: mark;
+    position: relative;
+  }
+
+  .rail-body {
+    grid-area: body;
+  }
+
+  .rail-dot {
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    top: var(--dot-top);
+    width: var(--dot);
+    height: var(--dot);
+    border-radius: 999px;
+    background: var(--color-ink);
+    border: 2px solid var(--color-ring);
+  }
+
+  .rail-item[data-current="true"] .rail-dot {
+    background: var(--color-blush);
+    border-color: var(--color-blush);
+    box-shadow: 0 0 0 4px rgb(142 36 70 / 0.45);
+  }
+
+  @media (min-width: 640px) {
+    .rail-item {
+      --dot-top: 0.5rem;
+      --rail-x: calc(7.5rem + var(--dot) / 2 - 1px);
+      grid-template-columns: 7.5rem 2rem minmax(0, 1fr);
+      grid-template-areas: "date mark body";
+    }
+
+    .rail-date {
+      margin-bottom: 0;
+      padding-top: 0.3rem;
+    }
+
+    .rail-date > span {
+      display: block;
+    }
+  }
+
+  /* skills: items read as a comma list */
+  .comma-list > li {
+    display: inline;
+  }
+
+  .comma-list > li:not(:last-child)::after {
+    content: ", ";
+  }
+}
+
+@keyframes route-draw {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes stop-in {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
