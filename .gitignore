@@ -1,0 +1,19 @@
+# deps
+/node_modules
+
+# next
+/.next/
+/out/
+next-env.d.ts
+*.tsbuildinfo
+
+# env and deploy
+.env*
+.vercel
+
+# misc
+.DS_Store
+npm-debug.log*
+
+# source resume, the shipped copy lives in public/
+/AryanResumeFinal-1.pdf
