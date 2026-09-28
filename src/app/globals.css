@@ -251,7 +251,8 @@
       font-variation-settings 300ms ease;
   }
 
-  .route-stop:hover .route-label {
+  .route-stop:hover .route-label,
+  .route-stop:focus-visible .route-label {
     color: var(--color-bone);
     font-variation-settings: "wdth" 112;
   }
@@ -459,6 +460,13 @@
   }
 
   @media (prefers-reduced-motion: reduce) {
+    .route-fill,
+    .route-dot,
+    .route-label,
+    .hl {
+      transition: none;
+    }
+
     .swish-ball {
       animation: none;
       transform: translateY(36px);
