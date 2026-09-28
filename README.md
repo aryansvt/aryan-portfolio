@@ -34,7 +34,7 @@ The highlighted words in the About text use the URLs in `aboutLinks`. If you set
 
 ### Site URL
 
-Canonical URLs, the sitemap, and the social preview image need an absolute URL. On Vercel this comes from `VERCEL_PROJECT_PRODUCTION_URL` automatically. For a custom domain, set `NEXT_PUBLIC_SITE_URL` (for example `https://aryanachar.com`) in the Vercel project settings.
+The site lives at https://www.aryanachar.com, and `aryanachar.com` redirects there. The canonical URL, the sitemap, `robots.txt`, and the social preview image all build absolute links from `SITE_URL` in `src/config/site.ts`, so change it there if the domain ever changes.
 
 ## Easter eggs
 

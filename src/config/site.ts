@@ -8,11 +8,8 @@ export const site = {
     "Aryan Achar is a software engineer and Computer Science student at UT Dallas working across AI engineering, data science, and full-stack development.",
 };
 
-// set NEXT_PUBLIC_SITE_URL for a custom domain, otherwise vercel's production url is used
-const vercelUrl = process.env.VERCEL_PROJECT_PRODUCTION_URL;
-
-export const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL ?? (vercelUrl ? `https://${vercelUrl}` : "http://localhost:3000");
+// canonical origin for metadata, the sitemap, and the og image. aryanachar.com redirects here
+export const SITE_URL = "https://www.aryanachar.com";
 
 // built at export time by src/app/og.png/route.tsx
 export const ogImage = {
