@@ -1,5 +1,7 @@
 import { todoLinks } from "@/config/links";
 
+import { FilmsLink } from "./eggs/FilmsLink";
+import { HoopsToggle } from "./eggs/HoopsToggle";
 import { Section } from "./Section";
 import { TextLink } from "./TextLink";
 
@@ -20,9 +22,9 @@ export function About() {
           faculty, and staff.
         </p>
         <p>
-          In my free time, I’m usually playing basketball, hanging out with my friends,{" "}
-          <TextLink href={todoLinks.letterboxd}>watching films</TextLink>, or reading a book from my ever-growing reading
-          list. Currently, I’m reading{" "}
+          In my free time, I’m usually playing <HoopsToggle />, hanging out with my friends,{" "}
+          <FilmsLink href={todoLinks.letterboxd}>watching films</FilmsLink>, or reading a book from my ever-growing
+          reading list. Currently, I’m reading{" "}
           <TextLink href={todoLinks.goodreads} className="italic">
             Urban Creatures
           </TextLink>{" "}

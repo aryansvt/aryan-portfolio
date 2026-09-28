@@ -367,6 +367,113 @@
   .comma-list > li:not(:last-child)::after {
     content: ", ";
   }
+
+  /* easter egg: basketball cursor and swish */
+  html.hoops,
+  html.hoops * {
+    cursor:
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'%3E%3Ccircle cx='14' cy='14' r='12' fill='%23d9773a' stroke='%233b170c' stroke-width='1.5'/%3E%3Cpath d='M2 14h24M14 2v24M5.8 5.8c4.2 4.2 4.2 12.2 0 16.4M22.2 5.8c-4.2 4.2-4.2 12.2 0 16.4' fill='none' stroke='%233b170c' stroke-width='1.3'/%3E%3C/svg%3E")
+        14 14,
+      auto !important;
+  }
+
+  .swish {
+    position: fixed;
+    z-index: 65;
+    width: 60px;
+    height: 90px;
+    pointer-events: none;
+    animation: swish-life 950ms ease-out forwards;
+  }
+
+  .swish svg {
+    overflow: visible;
+  }
+
+  .swish-rim {
+    fill: none;
+    stroke: var(--color-blush);
+    stroke-width: 2.2;
+    stroke-linecap: round;
+  }
+
+  .swish-net path {
+    fill: none;
+    stroke: var(--color-bone);
+    stroke-width: 1;
+    stroke-linecap: round;
+    opacity: 0.75;
+  }
+
+  .swish-ball {
+    animation: swish-drop 640ms cubic-bezier(0.55, 0, 0.85, 0.45) forwards;
+  }
+
+  .swish-net {
+    transform-box: view-box;
+    transform-origin: 30px 34px;
+    animation: swish-net 950ms ease-out forwards;
+  }
+
+  /* easter egg: letterbox bars and film grain */
+  .cinema {
+    position: fixed;
+    inset: 0;
+    z-index: 60;
+    pointer-events: none;
+    overflow: hidden;
+  }
+
+  .cinema-bar {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 11vh;
+    background: #000;
+  }
+
+  .cinema-top {
+    top: 0;
+    animation: cinema-top 4200ms cubic-bezier(0.65, 0, 0.35, 1) forwards;
+  }
+
+  .cinema-bottom {
+    bottom: 0;
+    animation: cinema-bottom 4200ms cubic-bezier(0.65, 0, 0.35, 1) forwards;
+  }
+
+  .cinema-wash {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, transparent 55%, rgb(0 0 0 / 0.45) 100%);
+    animation: cinema-fade 4200ms ease forwards;
+  }
+
+  .cinema-grain {
+    position: absolute;
+    inset: -60px;
+    opacity: 0.11;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 180px 180px;
+    animation: cinema-jitter 480ms steps(1) infinite;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .swish-ball {
+      animation: none;
+      transform: translateY(36px);
+    }
+
+    .swish-net,
+    .cinema-grain {
+      animation: none;
+    }
+
+    .cinema-top,
+    .cinema-bottom {
+      animation-name: cinema-fade;
+    }
+  }
 }
 
 @keyframes route-draw {
@@ -386,5 +493,97 @@
   to {
     opacity: 1;
     transform: none;
+  }
+}
+
+@keyframes swish-life {
+  0% {
+    opacity: 0;
+  }
+  10%,
+  78% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes swish-drop {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(50px);
+  }
+}
+
+@keyframes swish-net {
+  0%,
+  40% {
+    transform: none;
+  }
+  60% {
+    transform: scale(0.88, 1.28);
+  }
+  78% {
+    transform: scale(1.02, 0.94);
+  }
+  100% {
+    transform: none;
+  }
+}
+
+@keyframes cinema-top {
+  0% {
+    transform: translateY(-100%);
+  }
+  13%,
+  87% {
+    transform: none;
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}
+
+@keyframes cinema-bottom {
+  0% {
+    transform: translateY(100%);
+  }
+  13%,
+  87% {
+    transform: none;
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+@keyframes cinema-fade {
+  0% {
+    opacity: 0;
+  }
+  13%,
+  87% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes cinema-jitter {
+  0% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(-22px, 14px);
+  }
+  50% {
+    transform: translate(18px, -26px);
+  }
+  75% {
+    transform: translate(-12px, -10px);
   }
 }
