@@ -13,3 +13,11 @@ const vercelUrl = process.env.VERCEL_PROJECT_PRODUCTION_URL;
 
 export const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL ?? (vercelUrl ? `https://${vercelUrl}` : "http://localhost:3000");
+
+// built at export time by src/app/og.png/route.tsx
+export const ogImage = {
+  url: "/og.png",
+  width: 1200,
+  height: 630,
+  alt: `${site.name}, ${site.title}`,
+};
