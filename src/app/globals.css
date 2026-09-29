@@ -416,47 +416,280 @@
     animation: swish-net 950ms ease-out forwards;
   }
 
-  /* easter egg: letterbox bars and film grain */
-  .cinema {
-    position: fixed;
-    inset: 0;
-    z-index: 60;
+  /* easter egg: a blue envelope with a film card, anchored to the words */
+  .film {
+    position: relative;
+  }
+
+  .film-trigger {
+    font: inherit;
+    cursor: pointer;
+  }
+
+  .film-trigger:hover .hl,
+  .film-trigger:focus-visible .hl,
+  .film-trigger[aria-expanded="true"] .hl {
+    background-size: 100% 100%;
+    background-position: 0 100%;
+  }
+
+  .envelope {
+    position: absolute;
+    z-index: 20;
+    top: var(--y, 0px);
+    left: var(--x, 0px);
+    display: block;
+    width: 13.5rem;
+    /* room above the envelope for the open flap and the risen card */
+    padding-top: 6rem;
     pointer-events: none;
+    filter: drop-shadow(0 1px 1px rgb(0 0 0 / 0.45)) drop-shadow(0 12px 16px rgb(2 3 12 / 0.6));
+    transform-origin: 50% 100%;
+    animation: envelope-fade 220ms ease-out both;
+  }
+
+  .envelope[data-side="bottom"] {
+    transform-origin: 50% 0;
+  }
+
+  .envelope[data-state="closing"] {
+    animation: envelope-out 200ms ease-in both;
+  }
+
+  .envelope-defs {
+    position: absolute;
+    width: 0;
+    height: 0;
+  }
+
+  .envelope-body {
+    position: relative;
+    display: block;
+    height: 8.4375rem;
+    perspective: 26rem;
+    perspective-origin: 50% 20%;
+    pointer-events: auto;
+    cursor: default;
+  }
+
+  .envelope-layer {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+  }
+
+  .envelope-front {
+    z-index: 3;
+    /* the pocket's edge shades the card tucked behind it */
+    filter: drop-shadow(0 -1.5px 1.5px rgb(2 4 28 / 0.55));
+    /* only the painted pocket takes the pointer, so the card stays selectable */
+    pointer-events: none;
+  }
+
+  .envelope-front > * {
+    pointer-events: auto;
+  }
+
+  /* open by default: the flap has swung up behind the card */
+  .envelope-flap {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 6rem;
+    transform-origin: 50% 0;
+    transform: rotateX(180deg);
+    transform-style: preserve-3d;
+  }
+
+  .envelope-face {
+    position: absolute;
+    inset: 0;
+    display: block;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+
+  .envelope-face-in {
+    transform: rotateX(180deg);
+  }
+
+  .envelope-face svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+  }
+
+  /* darkens each face as it turns edge-on to the light */
+  .envelope-shade {
+    fill: #02041a;
+    opacity: 0;
+  }
+
+  /* the half left on the pocket settles a touch once the seal breaks */
+  .envelope-seal-low {
+    transform-box: fill-box;
+    transform-origin: 50% 55%;
+    transform: translate(0.2px, 0.6px) rotate(2deg);
+  }
+
+  /* the card rides in a slot that stops at the envelope's bottom edge */
+  .envelope-slot {
+    position: absolute;
+    z-index: 2;
+    top: -6rem;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: block;
     overflow: hidden;
   }
 
-  .cinema-bar {
+  .envelope-card {
     position: absolute;
-    left: 0;
-    right: 0;
-    height: 11vh;
-    background: #000;
+    top: 6.375rem;
+    right: 0.875rem;
+    left: 0.875rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 10rem;
+    padding-top: 0.875rem;
+    border: 1px solid rgb(239 230 236 / 0.13);
+    border-radius: 2px;
+    background:
+      radial-gradient(120% 55% at 50% 0%, rgb(70 100 240 / 0.09), transparent 70%),
+      linear-gradient(#1c1a20, #121015);
+    box-shadow:
+      inset 0 0 0 3px #19171d,
+      inset 0 0 0 3.6px rgb(239 230 236 / 0.07),
+      0 4px 10px rgb(0 0 0 / 0.45);
+    color: #ece4ea;
+    font-family: var(--font-serif);
+    text-align: center;
+    transform: translateY(-4.375rem);
   }
 
-  .cinema-top {
-    top: 0;
-    animation: cinema-top 4200ms cubic-bezier(0.65, 0, 0.35, 1) forwards;
+  .envelope-title {
+    font-size: 1.3125rem;
+    font-style: italic;
+    line-height: 1.15;
+    letter-spacing: 0.06em;
+    text-shadow: 0 0 14px rgb(80 115 255 / 0.3);
   }
 
-  .cinema-bottom {
-    bottom: 0;
-    animation: cinema-bottom 4200ms cubic-bezier(0.65, 0, 0.35, 1) forwards;
+  .envelope-label {
+    margin-top: 0.625rem;
+    color: #8f889a;
+    font-size: 0.625rem;
+    font-variant-caps: all-small-caps;
+    line-height: 1.4;
+    letter-spacing: 0.22em;
   }
 
-  .cinema-wash {
-    position: absolute;
+  .envelope-name {
+    margin-top: 0.25rem;
+    font-size: 0.9375rem;
+    font-style: normal;
+    line-height: 1.3;
+    letter-spacing: 0.015em;
+  }
+
+  .envelope-year {
+    color: #9d96a6;
+    font-size: 0.75rem;
+    line-height: 1.4;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .envelope {
+      animation-name: envelope-in;
+    }
+
+    .envelope-flap {
+      animation: envelope-flap 540ms cubic-bezier(0.45, 0, 0.2, 1) 140ms both;
+    }
+
+    .envelope-shade-out {
+      animation: envelope-shade-out 540ms cubic-bezier(0.45, 0, 0.2, 1) 140ms both;
+    }
+
+    .envelope-shade-in {
+      animation: envelope-shade-in 540ms cubic-bezier(0.45, 0, 0.2, 1) 140ms both;
+    }
+
+    .envelope-seal-low {
+      animation: envelope-crack 260ms cubic-bezier(0.3, 0, 0.2, 1) 170ms both;
+    }
+
+    .envelope-card {
+      animation: envelope-card 620ms cubic-bezier(0.2, 0.8, 0.25, 1) 580ms both;
+    }
+
+    /* closing runs the same moves backwards, quickly */
+    .envelope[data-state="closing"] {
+      animation: envelope-out 120ms ease-in 120ms both;
+    }
+
+    .envelope[data-state="closing"] .envelope-card {
+      animation: envelope-card-in 110ms ease-in both;
+    }
+
+    .envelope[data-state="closing"] .envelope-flap {
+      animation: envelope-flap-close 130ms ease-in-out 70ms both;
+    }
+
+    .envelope[data-state="closing"] .envelope-shade-out {
+      animation: envelope-shade-out 130ms ease-in-out 70ms reverse both;
+    }
+
+    .envelope[data-state="closing"] .envelope-shade-in {
+      animation: envelope-shade-in 130ms ease-in-out 70ms reverse both;
+    }
+
+    .envelope[data-state="closing"] .envelope-seal-low {
+      animation: envelope-crack 90ms ease-in 110ms reverse both;
+    }
+  }
+
+  /* soft light that trails the mouse, behind everything */
+  .glow {
+    position: fixed;
     inset: 0;
-    background: radial-gradient(ellipse at center, transparent 55%, rgb(0 0 0 / 0.45) 100%);
-    animation: cinema-fade 4200ms ease forwards;
+    z-index: -1;
+    display: none;
+    overflow: hidden;
+    pointer-events: none;
   }
 
-  .cinema-grain {
+  .glow-light {
     position: absolute;
-    inset: -60px;
-    opacity: 0.11;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-    background-size: 180px 180px;
-    animation: cinema-jitter 480ms steps(1) infinite;
+    top: -15rem;
+    left: -15rem;
+    width: 30rem;
+    height: 30rem;
+    border-radius: 50%;
+    background: radial-gradient(closest-side, rgb(142 36 70 / 0.075), rgb(75 29 94 / 0.045) 45%, transparent);
+    opacity: 0;
+    transform: translate3d(var(--glow-x, 0px), var(--glow-y, 0px), 0);
+    transition: opacity 500ms ease;
+    will-change: transform;
+  }
+
+  .glow-light[data-on="true"] {
+    opacity: 1;
+  }
+
+  @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+    .glow {
+      display: block;
+    }
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -472,14 +705,8 @@
       transform: translateY(36px);
     }
 
-    .swish-net,
-    .cinema-grain {
+    .swish-net {
       animation: none;
-    }
-
-    .cinema-top,
-    .cinema-bottom {
-      animation-name: cinema-fade;
     }
   }
 }
@@ -542,56 +769,90 @@
   }
 }
 
-@keyframes cinema-top {
-  0% {
-    transform: translateY(-100%);
-  }
-  13%,
-  87% {
-    transform: none;
-  }
-  100% {
-    transform: translateY(-100%);
-  }
-}
-
-@keyframes cinema-bottom {
-  0% {
-    transform: translateY(100%);
-  }
-  13%,
-  87% {
-    transform: none;
-  }
-  100% {
-    transform: translateY(100%);
-  }
-}
-
-@keyframes cinema-fade {
-  0% {
-    opacity: 0;
-  }
-  13%,
-  87% {
-    opacity: 1;
-  }
-  100% {
+@keyframes envelope-fade {
+  from {
     opacity: 0;
   }
 }
 
-@keyframes cinema-jitter {
-  0% {
-    transform: translate(0, 0);
+@keyframes envelope-out {
+  to {
+    opacity: 0;
   }
-  25% {
-    transform: translate(-22px, 14px);
+}
+
+@keyframes envelope-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px) scale(0.96);
+  }
+}
+
+@keyframes envelope-flap {
+  from {
+    z-index: 4;
+    transform: rotateX(0deg);
+  }
+  /* edge on, so the swap behind the card never shows */
+  50% {
+    z-index: 4;
+  }
+  51% {
+    z-index: 1;
+  }
+}
+
+@keyframes envelope-flap-close {
+  from {
+    z-index: 1;
+    transform: rotateX(180deg);
   }
   50% {
-    transform: translate(18px, -26px);
+    z-index: 1;
   }
-  75% {
-    transform: translate(-12px, -10px);
+  51% {
+    z-index: 4;
+  }
+  to {
+    z-index: 4;
+    transform: rotateX(0deg);
+  }
+}
+
+@keyframes envelope-shade-out {
+  from {
+    opacity: 0;
+  }
+  50%,
+  to {
+    opacity: 0.55;
+  }
+}
+
+@keyframes envelope-shade-in {
+  from,
+  50% {
+    opacity: 0.7;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes envelope-crack {
+  from {
+    transform: none;
+  }
+}
+
+@keyframes envelope-card {
+  from {
+    transform: translateY(0);
+  }
+}
+
+@keyframes envelope-card-in {
+  to {
+    transform: translateY(0);
   }
 }

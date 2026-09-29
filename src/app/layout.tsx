@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Archivo, Newsreader } from "next/font/google";
 
+import { CursorGlow } from "@/components/CursorGlow";
 import { contact } from "@/config/links";
 import { SITE_URL, ogImage, site } from "@/config/site";
 
@@ -69,6 +70,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${archivo.variable} ${newsreader.variable}`}>
       <body>
+        <CursorGlow />
         {children}
         <script
           type="application/ld+json"

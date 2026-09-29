@@ -1,6 +1,6 @@
 import { aboutLinks } from "@/config/links";
 
-import { FilmsLink } from "./eggs/FilmsLink";
+import { FilmEnvelope } from "./eggs/FilmEnvelope";
 import { HoopsToggle } from "./eggs/HoopsToggle";
 import { Section } from "./Section";
 import { TextLink } from "./TextLink";
@@ -23,7 +23,7 @@ export function About() {
         </p>
         <p>
           In my free time, I’m usually playing <HoopsToggle />, hanging out with my friends,{" "}
-          <FilmsLink href={aboutLinks.letterboxd}>watching films</FilmsLink>, or reading a book from my ever-growing
+          <FilmEnvelope>watching films</FilmEnvelope>, or reading a book from my ever-growing
           reading list. Currently, I’m reading{" "}
           <TextLink href={aboutLinks.goodreads} className="italic">
             Urban Creatures

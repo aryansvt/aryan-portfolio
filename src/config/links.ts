@@ -4,7 +4,6 @@
 export const aboutLinks = {
   innowhyte: "https://www.innowhyte.ai/",
   michelsLab: "https://profiles.utdallas.edu/alexander.michels",
-  letterboxd: "https://letterboxd.com/forevaryndel/",
   goodreads: "https://www.goodreads.com/en/book/show/53658339-urban-creatures",
 };
 
