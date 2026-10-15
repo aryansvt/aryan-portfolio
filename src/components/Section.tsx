@@ -7,7 +7,7 @@ type SectionProps = {
 
 // title on the left, sticky on wide screens; content on the right
 export function Section({ id, children }: SectionProps) {
-  const label = sections.find((s) => s.id === id)?.label ?? id;
+  const label = sections.find((s) => s.id === id)!.label;
   return (
     <section id={id} aria-labelledby={`${id}-title`} className="wrap section">
       <div className="section-label">

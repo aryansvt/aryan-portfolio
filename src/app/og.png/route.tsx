@@ -3,7 +3,7 @@ import { join } from "node:path";
 
 import { ImageResponse } from "next/og";
 
-import { RAMP, glyphIndex, swell } from "@/components/ascii/field";
+import { glyphFor, swell } from "@/components/ascii/field";
 import { ogImage, site } from "@/config/site";
 
 // a route handler instead of opengraph-image so the export writes out/og.png with an extension
@@ -15,7 +15,7 @@ const COLS = 150;
 const sea = Array.from({ length: ROWS }, (_, r) => {
   const z = ((r + 1) / ROWS) ** 1.5;
   let line = "";
-  for (let c = 0; c < COLS; c++) line += RAMP[glyphIndex(swell(c / COLS, z, 2.2) ** 1.5 * (0.22 + z * 0.85))];
+  for (let c = 0; c < COLS; c++) line += glyphFor(swell(c / COLS, z, 2.2) ** 1.5 * (0.22 + z * 0.85));
   return { line, alpha: 0.3 + z * 0.7, tone: r < ROWS * 0.3 ? "#e8efff" : "#a8c4ff" };
 });
 

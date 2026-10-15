@@ -30,9 +30,7 @@
 
 :root {
   --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
-  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
   --gutter: clamp(1.25rem, 4vw, 4rem);
-  --header-h: 4.5rem;
 }
 
 /* grounds remap the text and line tokens */
@@ -185,6 +183,7 @@
   }
 
   .t-item {
+    overflow-wrap: anywhere;
     font-family: var(--font-display);
     font-weight: 700;
     font-variation-settings: "wdth" 112;
@@ -417,7 +416,7 @@
     gap: 0.25rem;
     padding: 0.375rem;
     border-radius: 999px;
-    background: rgb(247 250 255 / 0.82);
+    background: rgb(247 250 255 / 0.9);
     border: 1px solid rgb(255 255 255 / 0.65);
     box-shadow:
       0 1px 2px rgb(6 18 56 / 0.08),
@@ -735,6 +734,16 @@
     margin-top: clamp(2rem, 6vh, 3.5rem);
   }
 
+  .hero-sea::before {
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    bottom: 100%;
+    height: clamp(4rem, 12vh, 8rem);
+    pointer-events: none;
+    background: linear-gradient(to top, rgb(168 196 255 / 0.14), transparent);
+  }
+
   .hero-horizon {
     position: absolute;
     inset-inline: 0;
@@ -795,8 +804,9 @@
       animation: fade 1400ms ease both 300ms;
     }
 
+    /* backwards only: a held fill keeps an opacity effect alive, which turns off the pill's backdrop blur */
     .site-header {
-      animation: header-in 600ms var(--ease-out) both 200ms;
+      animation: header-in 600ms var(--ease-out) 200ms backwards;
     }
   }
 
@@ -833,10 +843,6 @@
       flex-direction: column;
       align-items: flex-start;
       padding-top: 0.3rem;
-    }
-
-    .role-dates > span:not(.now) {
-      display: block;
     }
   }
 
@@ -923,6 +929,8 @@
   }
 
   .project-title {
+    min-width: 0;
+    overflow-wrap: anywhere;
     font-family: var(--font-display);
     font-weight: 800;
     font-variation-settings: "wdth" 125;
@@ -1117,6 +1125,10 @@
 
   .envelope[data-side="bottom"] {
     transform-origin: 50% 0;
+  }
+
+  .envelope[data-side="left"] {
+    transform-origin: 100% 70%;
   }
 
   .envelope[data-state="closing"] {

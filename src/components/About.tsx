@@ -9,8 +9,8 @@ export function About() {
   return (
     <Section id="about">
       <p className="t-lead reveal">
-        Hi! I’m Aryan, a Computer Science student at UT Dallas working across AI engineering, data science, and
-        full-stack development.
+        Hi! I’m Aryan, a Computer Science student at UT Dallas working across AI engineering, data science, and{" "}
+        <span className="whitespace-nowrap">full-stack</span> development.
       </p>
       <div className="t-body reveal mt-7 space-y-5">
         <p>

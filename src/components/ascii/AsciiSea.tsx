@@ -25,8 +25,6 @@ export function AsciiSea() {
     const media = window.matchMedia(REDUCE);
     const atlas = document.createElement("canvas");
     const ripples: Ripple[] = [];
-    let w = 0;
-    let h = 0;
     let cw = 9;
     let ch = 12;
     let pw = 9;
@@ -115,8 +113,8 @@ export function AsciiSea() {
     };
 
     const resize = () => {
-      w = box.clientWidth;
-      h = box.clientHeight;
+      const w = box.clientWidth;
+      const h = box.clientHeight;
       if (!w || !h) return;
       const dpr = fitCanvas(canvas, w, h);
       const small = w < 640;

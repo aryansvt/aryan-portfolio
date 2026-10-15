@@ -27,9 +27,13 @@ export function Experience() {
                   {role.orgUrl ? <TextLink href={role.orgUrl}>{role.org}</TextLink> : role.org}
                   {role.place && (
                     <>
-                      <span aria-hidden="true"> · </span>
-                      <span className="sr-only">, </span>
-                      {role.place}
+                      {" "}
+                      {/* the dot travels with the place so it never ends a line */}
+                      <span className="whitespace-nowrap">
+                        <span aria-hidden="true">· </span>
+                        <span className="sr-only">, </span>
+                        {role.place}
+                      </span>
                     </>
                   )}
                 </p>

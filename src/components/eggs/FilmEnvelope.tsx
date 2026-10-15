@@ -7,6 +7,8 @@ const GUTTER = 16;
 const GAP = 4;
 // the fixed header pill covers the top of the viewport
 const HEADER = 84;
+// matches .envelope padding-top: room above the body for the open flap and the risen card
+const FLAP_ROOM = 96;
 
 // just past the longest closing animation in globals.css
 const CLOSE_MS = 250;
@@ -357,6 +359,18 @@ export function FilmEnvelope({ children }: { children: React.ReactNode }) {
       const width = envelope.offsetWidth;
       const height = envelope.offsetHeight;
       const viewport = document.documentElement.clientWidth;
+
+      // wide screens: sit in the empty gutter left of the text column, level with the words
+      const column = anchor.closest(".section-body")?.getBoundingClientRect().left ?? 0;
+      const gutterLeft = column - GAP * 4 - width;
+      if (gutterLeft >= GUTTER) {
+        const body = height - FLAP_ROOM;
+        const top = Math.max(words.top + words.height / 2 - FLAP_ROOM - body / 2, HEADER - FLAP_ROOM / 3);
+        envelope.dataset.side = "left";
+        envelope.style.setProperty("--x", `${gutterLeft - origin.left}px`);
+        envelope.style.setProperty("--y", `${top - origin.top}px`);
+        return;
+      }
 
       const left = Math.min(
         Math.max(words.left + words.width / 2 - width / 2, GUTTER),
