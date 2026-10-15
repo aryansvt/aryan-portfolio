@@ -45,7 +45,7 @@ export function Hero() {
       </div>
 
       <div className="hero-sea" aria-hidden="true">
-        <span className="hero-horizon" />
+        <span className="sea-horizon" />
         <AsciiSea />
       </div>
       <DitherEdge color="var(--color-paper)" fade="in" className="bottom-0" />

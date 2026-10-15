@@ -756,7 +756,8 @@
     margin-top: clamp(2rem, 6vh, 3.5rem);
   }
 
-  .hero-sea::before {
+  .hero-sea::before,
+  .close-sea::before {
     content: "";
     position: absolute;
     inset-inline: 0;
@@ -766,12 +767,21 @@
     background: linear-gradient(to top, rgb(168 196 255 / 0.14), transparent);
   }
 
-  .hero-horizon {
+  .sea-horizon {
     position: absolute;
     inset-inline: 0;
     top: 0;
     height: 1px;
     background: linear-gradient(90deg, transparent, rgb(232 239 255 / 0.6) 20%, rgb(232 239 255 / 0.6) 80%, transparent);
+  }
+
+  /* the footer echo: shorter, and it fades out before the colophon */
+  .close-sea {
+    position: relative;
+    height: clamp(8rem, 15vw, 12rem);
+    margin-top: clamp(4.5rem, 9vw, 7rem);
+    -webkit-mask-image: linear-gradient(#000 55%, transparent);
+    mask-image: linear-gradient(#000 55%, transparent);
   }
 
   .canvas-fill {

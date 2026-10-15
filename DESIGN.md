@@ -288,7 +288,7 @@ An ordered-dither canvas, 42px tall, 3px cells, painting the neighboring ground'
 
 ### Character Cells (signature)
 - **ASCII sea:** a Martian Mono character swell in ice and frost under the hero horizon; the pointer leaves a fading wake.
-- **Stippled horizon:** the same cell language closing the abyss footer.
+- **Footer sea:** the hero sea again in the abyss footer, finer (7 by 10 cells) and at about 40% strength, under the same horizon line and fog, fading out before the colophon. The page closes the way it opened.
 - **Scramble:** role dates decode left to right with glyphs from `/\|-_=+*#<>` over 480ms when scrolled into view; width is held by an invisible copy and screen readers get the plain text.
 
 ### Motion

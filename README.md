@@ -27,7 +27,7 @@ npm run preview    # serve out/ on http://localhost:3000
 | Colors, type, grounds, and every component style | `src/app/globals.css` |
 | Header pill and phone menu | `src/components/SiteHeader.tsx` |
 | Hero, contact close | `src/components/Hero.tsx`, `src/components/Contact.tsx` |
-| ASCII sea, dither edges, stippled horizon | `src/components/ascii/` |
+| ASCII sea, dither edges | `src/components/ascii/` |
 | Social preview image | `src/app/og.png/route.tsx` |
 | Resume PDF | `public/aryan-achar-resume.pdf` |
 
@@ -58,9 +58,9 @@ The ASCII bits are small canvases in `src/components/ascii/`, all hidden from sc
 
 - the sea at the bottom of the hero, which ripples where the mouse moves or a finger taps
 - the dithered edges where the page changes color, which fill in the first time you scroll to them
-- the stippled horizon in the contact section
+- a quieter, finer echo of the same sea at the bottom of the contact section
 
-`field.ts` holds the shared math and has a test (`npm test`). With reduced motion turned on, the sea is a still frame and the edges appear already filled in. A faint film grain sits over the whole page as one fixed layer.
+`field.ts` holds the shared math and has a test (`npm test`). With reduced motion turned on, both seas are still frames and the edges appear already filled in. A faint film grain sits over the whole page as one fixed layer.
 
 ## Fonts
 

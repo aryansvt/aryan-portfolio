@@ -1,7 +1,7 @@
 import { contact, resumePath } from "@/config/links";
 
 import { DitherEdge } from "./ascii/DitherEdge";
-import { Horizon } from "./ascii/Horizon";
+import { AsciiSea } from "./ascii/AsciiSea";
 import { ArrowUp, ArrowUpRight, GitHubIcon, LinkedInIcon } from "./icons";
 
 const external = { target: "_blank", rel: "noopener noreferrer" } as const;
@@ -40,13 +40,15 @@ export function Contact() {
         </div>
       </div>
 
-      <div className="relative mt-10 h-[clamp(9rem,16vw,13.75rem)]" aria-hidden="true">
-        <Horizon />
+      {/* a quieter echo of the hero sea, so the page closes the way it opened */}
+      <div className="close-sea" aria-hidden="true">
+        <span className="sea-horizon" />
+        <AsciiSea quiet />
       </div>
 
       <div className="wrap flex flex-col-reverse gap-4 pt-4 pb-10 sm:flex-row sm:items-center sm:justify-between">
-        <p className="t-mono max-w-[46rem] text-[0.6875rem] text-(--fg-soft) normal-case">
-          Built with Next.js and TypeScript, set in Hubot Sans, Mona Sans, and Martian Mono, and hosted on Vercel.
+        <p className="t-mono text-[0.6875rem] text-balance text-(--fg-soft) normal-case">
+          Built with Next.js and TypeScript, set in Hubot Sans, Mona Sans, and Martian Mono, and hosted on&nbsp;Vercel.
         </p>
         <a href="#top" className="back-top t-mono shrink-0">
           Back to top

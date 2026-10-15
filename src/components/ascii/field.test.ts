@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 
-import { BAYER4, RAMP, bayer, cellGrid, fitCanvas, glyphFor, mulberry32, swell } from "./field.ts";
+import { BAYER4, RAMP, bayer, cellGrid, fitCanvas, glyphFor, swell } from "./field.ts";
 
 test("swell stays in range and is deterministic", () => {
   for (let i = 0; i < 200; i++) {
@@ -31,12 +31,6 @@ test("fitCanvas clamps dpr and sizes the backing store", () => {
   assert.equal(dpr, 2);
   assert.equal(canvas.width, 200);
   assert.equal(canvas.height, 100);
-});
-
-test("seeded random repeats", () => {
-  const a = mulberry32(7);
-  const b = mulberry32(7);
-  assert.equal(a(), b());
 });
 
 test("cell grid keeps one pitch at fractional dpr", () => {

@@ -12,8 +12,13 @@ const TONES = ["#e8efff", "#a8c4ff"];
 const MAX_RIPPLES = 12;
 const FRAME_MS = 33;
 
+type AsciiSeaProps = {
+  // the footer's echo: finer cells, dimmer glyphs
+  quiet?: boolean;
+};
+
 // a swell of characters under a single horizon; the pointer leaves a wake that fades
-export function AsciiSea() {
+export function AsciiSea({ quiet = false }: AsciiSeaProps) {
   const ref = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -65,7 +70,7 @@ export function AsciiSea() {
         const depth = (r + 1) / rows;
         const z = depth ** 1.5;
         const cy = r * ch + ch / 2;
-        ctx.globalAlpha = 0.28 + z * 0.72;
+        ctx.globalAlpha = (0.28 + z * 0.72) * (quiet ? 0.42 : 1);
         const tone = depth < 0.3 ? 0 : 1;
 
         for (let c = 0; c < cols; c++) {
@@ -116,7 +121,8 @@ export function AsciiSea() {
       if (!w || !h) return;
       const dpr = fitCanvas(canvas, w, h);
       const small = w < 640;
-      ({ pw, ph, cw, ch, cols, rows } = cellGrid(w, h, small ? 8 : 9, small ? 11 : 12, dpr));
+      const [bw, bh] = quiet ? (small ? [6, 9] : [7, 10]) : small ? [8, 11] : [9, 12];
+      ({ pw, ph, cw, ch, cols, rows } = cellGrid(w, h, bw, bh, dpr));
       buildAtlas(dpr);
       draw(performance.now());
     };
@@ -163,7 +169,7 @@ export function AsciiSea() {
       document.removeEventListener("visibilitychange", sync);
       media.removeEventListener("change", sync);
     };
-  }, []);
+  }, [quiet]);
 
   return <canvas ref={ref} className="canvas-fill" aria-hidden="true" />;
 }
