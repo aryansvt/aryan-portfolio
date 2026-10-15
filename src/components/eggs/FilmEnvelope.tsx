@@ -399,13 +399,13 @@ export function FilmEnvelope({ children }: { children: React.ReactNode }) {
     <span className="film" ref={anchorRef}>
       <button
         type="button"
-        className="film-trigger"
+        className="film-trigger egg"
         ref={triggerRef}
         aria-expanded={open}
         aria-controls={id}
         onClick={toggle}
       >
-        <span className="hl">{children}</span>
+        {children}
       </button>
       {/* the card text is read out when the envelope appears */}
       <span id={id} aria-live="polite">
