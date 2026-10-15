@@ -1,0 +1,185 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-15T00:00:00Z",
+  "title": "Design System: Aryan Achar",
+  "extensions": {
+    "colorMeta": {
+      "signal": { "role": "primary", "displayName": "Signal Blue", "canonical": "#2b4bff", "tonalRamp": ["#030a3d", "#0a1a7a", "#1530c2", "#2b4bff", "#5a74ff", "#8a9dff", "#bcc8ff", "#e6ebff"] },
+      "signal-deep": { "role": "primary", "displayName": "Signal Deep", "canonical": "#1d3ef0", "tonalRamp": ["#020838", "#081772", "#122bb8", "#1d3ef0", "#4d68f5", "#8095f8", "#b6c3fb", "#e4e9fe"] },
+      "frost": { "role": "secondary", "displayName": "Frost", "canonical": "#a8c4ff", "tonalRamp": ["#0b1a3d", "#1d3a78", "#3a63b8", "#6e94e8", "#a8c4ff", "#c4d7ff", "#dde8ff", "#f2f6ff"] },
+      "ice": { "role": "secondary", "displayName": "Ice", "canonical": "#e8efff", "tonalRamp": ["#141c33", "#2c3a63", "#4f6296", "#7f91c2", "#adbce3", "#cfd9f5", "#e8efff", "#f7f9ff"] },
+      "paper": { "role": "neutral", "displayName": "Cold Paper", "canonical": "#f2f6fb", "tonalRamp": ["#171c24", "#2f3845", "#4f5b6b", "#788596", "#a3afbe", "#cdd6e1", "#e5ecf4", "#f2f6fb"] },
+      "wash": { "role": "neutral", "displayName": "Wash", "canonical": "#e3ecf8", "tonalRamp": ["#141c28", "#2b384c", "#4a5b76", "#7186a3", "#9cb0ca", "#c5d4e8", "#e3ecf8", "#f4f8fd"] },
+      "line": { "role": "neutral", "displayName": "Hairline", "canonical": "#d3deee", "tonalRamp": ["#131b28", "#29374d", "#475a78", "#6d83a5", "#97abc9", "#d3deee", "#e6edf7", "#f5f8fc"] },
+      "ink": { "role": "neutral", "displayName": "Ink", "canonical": "#0a1a3f", "tonalRamp": ["#0a1a3f", "#1a2d5c", "#30457a", "#4f6496", "#7488b3", "#9eaecf", "#c9d3e8", "#eef2f9"] },
+      "ink-soft": { "role": "neutral", "displayName": "Ink Soft", "canonical": "#42557a", "tonalRamp": ["#0e1628", "#1f2c47", "#2f3f61", "#42557a", "#64779b", "#8e9ebb", "#bcc7da", "#e8ecf3"] },
+      "ice-soft": { "role": "neutral", "displayName": "Ice Soft", "canonical": "#9fb2da", "tonalRamp": ["#0f1830", "#22335c", "#3b5088", "#5f76ae", "#9fb2da", "#bccae6", "#d9e2f2", "#f1f4fa"] },
+      "deep": { "role": "neutral", "displayName": "Deep Water", "canonical": "#0a1a4a", "tonalRamp": ["#0a1a4a", "#13286b", "#1f3a8c", "#3653ad", "#5a74c4", "#8698d6", "#b6c2e7", "#e6eaf6"] },
+      "deep-raised": { "role": "neutral", "displayName": "Deep Raised", "canonical": "#102463", "tonalRamp": ["#060f2b", "#0b1a47", "#102463", "#1f3a8a", "#3f5bb0", "#7088cc", "#a9b8e2", "#e1e7f5"] },
+      "abyss": { "role": "neutral", "displayName": "Abyss", "canonical": "#040a1c", "tonalRamp": ["#040a1c", "#0b1736", "#152650", "#253b70", "#3f5690", "#6a7fb0", "#a4b2d2", "#e0e6f2"] },
+      "white": { "role": "neutral", "displayName": "White", "canonical": "#ffffff", "tonalRamp": ["#1a1a1a", "#3a3a3a", "#5c5c5c", "#808080", "#a6a6a6", "#cccccc", "#ebebeb", "#ffffff"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "The hero name only; one line from 640px, two lines on phones at clamp(3rem, 18.4vw, 6.5rem)." },
+      "close": { "displayName": "Close", "purpose": "The contact close title on the abyss ground." },
+      "headline": { "displayName": "Headline", "purpose": "Section titles, sticky in the left four columns on desktop." },
+      "project-title": { "displayName": "Project Title", "purpose": "Project names on the deep band." },
+      "title": { "displayName": "Title", "purpose": "Role titles, the hero job title, the close email." },
+      "lead": { "displayName": "Lead", "purpose": "The opening line of About." },
+      "body": { "displayName": "Body", "purpose": "Reading copy in fg-soft, 66ch max." },
+      "label": { "displayName": "Label", "purpose": "Uppercase condensed mono for dates, footer note, back-to-top." },
+      "chip": { "displayName": "Chip", "purpose": "Condensed mono tech tags." }
+    },
+    "grounds": [
+      { "name": "sky", "background": "linear-gradient(#2b4bff 0%, #2142ef 22%, #1b36cc 46%, #0a1a4a 72%, #081540 100%)", "fg": "#ffffff", "fgSoft": "#dce6ff", "rule": "rgb(232 239 255 / 0.42)", "accent": "#ffffff", "purpose": "Hero only." },
+      { "name": "paper", "background": "var(--color-paper)", "fg": "var(--color-ink)", "fgSoft": "var(--color-ink-soft)", "rule": "var(--color-line)", "accent": "var(--color-signal)", "chipBg": "var(--color-wash)", "chipFg": "var(--color-ink)", "purpose": "About, Experience, Skills." },
+      { "name": "deep", "background": "var(--color-deep)", "fg": "var(--color-ice)", "fgSoft": "var(--color-ice-soft)", "rule": "rgb(168 196 255 / 0.16)", "accent": "var(--color-frost)", "chipBg": "rgb(168 196 255 / 0.1)", "chipFg": "var(--color-frost)", "purpose": "Projects band." },
+      { "name": "abyss", "background": "var(--color-abyss)", "fg": "var(--color-ice)", "fgSoft": "var(--color-ice-soft)", "rule": "rgb(168 196 255 / 0.14)", "accent": "var(--color-frost)", "chipBg": "rgb(168 196 255 / 0.1)", "chipFg": "var(--color-frost)", "purpose": "Contact close." }
+    ],
+    "shadows": [
+      { "name": "glass-pill", "value": "0 1px 2px rgb(6 18 56 / 0.08), 0 10px 28px -10px rgb(6 18 56 / 0.28)", "purpose": "Fixed header pill, with backdrop-filter blur(16px) saturate(1.4) on rgb(247 250 255 / 0.9)." },
+      { "name": "glass-menu", "value": "0 1px 2px rgb(6 18 56 / 0.1), 0 24px 48px -16px rgb(6 18 56 / 0.35)", "purpose": "Phone popover menu, with backdrop-filter blur(18px) saturate(1.4) on rgb(247 250 255 / 0.94)." }
+    ],
+    "textures": [
+      { "name": "grain", "value": "feTurbulence fractalNoise baseFrequency 0.85, 3 octaves, 200px tile, overlay blend", "purpose": "Whole page at 0.13 opacity; sky at 0.22." },
+      { "name": "dither-edge", "value": "canvas, 42px tall, 3px cells, Bayer ordered threshold, image-rendering pixelated", "purpose": "Every ground-to-ground join; develops once over 700ms." },
+      { "name": "halftone", "value": "radial-gradient(circle, rgb(168 196 255 / 0.2) 0.9px, transparent 1.4px) 0 0 / 7px 7px over linear-gradient(90deg, rgb(16 36 99 / 0.95), rgb(16 36 99 / 0.35))", "purpose": "Project row hover fill on the deep band." }
+    ],
+    "motion": [
+      { "name": "ease-out", "value": "cubic-bezier(0.23, 1, 0.32, 1)", "purpose": "The single interaction curve." },
+      { "name": "press", "value": "160ms", "purpose": "Button and monogram press scale (0.97, 0.95)." },
+      { "name": "color", "value": "180-200ms ease", "purpose": "Color, background, border state changes." },
+      { "name": "nudge", "value": "220ms", "purpose": "Arrow icons shift 2px up-right on hover." },
+      { "name": "indicator", "value": "280ms", "purpose": "Nav indicator slide and width." },
+      { "name": "hairline-draw", "value": "320ms", "purpose": "Link underline draw." },
+      { "name": "halftone-wipe", "value": "420ms in, 220ms out", "purpose": "Project row halftone clip-path wipe." },
+      { "name": "hero-rise", "value": "760ms, 120ms delay, 90ms stagger", "purpose": "Hero name lines rise out of a mask." },
+      { "name": "fade-up", "value": "600ms, 10px", "purpose": "Hero supporting copy and header entrance." },
+      { "name": "scroll-reveal", "value": "view() timeline, entry 0% to 38%, 14px", "purpose": "Rows and blocks; section titles use a clip rise over entry 10% to 70%." },
+      { "name": "scramble", "value": "480ms", "purpose": "Experience dates decode left to right on first view." },
+      { "name": "dither-develop", "value": "700ms cubic ease-out", "purpose": "Band edges develop once when seen." },
+      { "name": "menu-stagger", "value": "260ms items, 30ms steps, 40ms offset", "purpose": "Phone menu item entrance." }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Light Button",
+      "kind": "button",
+      "refersTo": "button-light",
+      "description": "Primary action on the sky ground, white pill with a signal arrow.",
+      "html": "<a class=\"ds-btn ds-btn-light\" href=\"#\">View resume <svg class=\"ds-nudge\" width=\"12\" height=\"12\" viewBox=\"0 0 12 12\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\"><path d=\"M3.5 8.5l5-5M4.5 3.5h4v4\"/></svg></a>",
+      "css": ".ds-btn { display: inline-flex; align-items: center; gap: 0.5rem; min-height: 2.875rem; padding-inline: 1.25rem; border-radius: 999px; border: 1px solid transparent; font-family: 'Mona Sans', ui-sans-serif, sans-serif; font-weight: 600; font-size: 0.9375rem; line-height: 1; text-decoration: none; transition: transform 160ms cubic-bezier(0.23, 1, 0.32, 1), background-color 200ms ease, border-color 200ms ease; } .ds-btn:active { transform: scale(0.97); } .ds-btn:focus-visible { outline: 2px solid #2b4bff; outline-offset: 3px; } .ds-nudge { transition: transform 220ms cubic-bezier(0.23, 1, 0.32, 1); } .ds-btn:hover .ds-nudge { transform: translate(2px, -2px); } .ds-btn-light { background: #fff; color: #0a1a4a; } .ds-btn-light .ds-nudge { color: #2b4bff; } .ds-btn-light:hover { background: #e8efff; }"
+    },
+    {
+      "name": "Solid Button",
+      "kind": "button",
+      "refersTo": "button-solid",
+      "description": "Signal pill for the resume action on dark grounds and in the header.",
+      "html": "<a class=\"ds-btn-solid\" href=\"#\">View resume</a>",
+      "css": ".ds-btn-solid { display: inline-flex; align-items: center; min-height: 2.875rem; padding-inline: 1.25rem; border-radius: 999px; background: #2b4bff; color: #fff; font-family: 'Mona Sans', ui-sans-serif, sans-serif; font-weight: 600; font-size: 0.9375rem; text-decoration: none; transition: transform 160ms cubic-bezier(0.23, 1, 0.32, 1), background-color 200ms ease; } .ds-btn-solid:hover { background: #1d3ef0; } .ds-btn-solid:active { transform: scale(0.97); } .ds-btn-solid:focus-visible { outline: 2px solid #a8c4ff; outline-offset: 3px; }"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Secondary links on sky and abyss, a hairline pill.",
+      "html": "<div style=\"background:#040a1c;padding:16px\"><a class=\"ds-btn-ghost\" href=\"#\">GitHub</a></div>",
+      "css": ".ds-btn-ghost { display: inline-flex; align-items: center; min-height: 2.875rem; padding-inline: 1.25rem; border-radius: 999px; border: 1px solid rgb(168 196 255 / 0.14); color: #e8efff; font-family: 'Mona Sans', ui-sans-serif, sans-serif; font-weight: 600; font-size: 0.9375rem; text-decoration: none; transition: transform 160ms cubic-bezier(0.23, 1, 0.32, 1), background-color 200ms ease, border-color 200ms ease; } .ds-btn-ghost:hover { background: rgb(255 255 255 / 0.08); border-color: rgb(232 239 255 / 0.7); } .ds-btn-ghost:active { transform: scale(0.97); } .ds-btn-ghost:focus-visible { outline: 2px solid #a8c4ff; outline-offset: 3px; }"
+    },
+    {
+      "name": "Header Pill",
+      "kind": "nav",
+      "refersTo": "nav-pill",
+      "description": "Fixed glass pill with the scroll-ring monogram, section links, and a sliding indicator.",
+      "html": "<nav class=\"ds-pill\"><a class=\"ds-mark\" href=\"#\"><span>AA</span></a><a class=\"ds-nav-link ds-current\" href=\"#\">About</a><a class=\"ds-nav-link\" href=\"#\">Experience</a><a class=\"ds-nav-link\" href=\"#\">Projects</a></nav>",
+      "css": ".ds-pill { display: inline-flex; align-items: center; gap: 0.25rem; padding: 0.375rem; border-radius: 999px; background: rgb(247 250 255 / 0.9); border: 1px solid rgb(255 255 255 / 0.65); box-shadow: 0 1px 2px rgb(6 18 56 / 0.08), 0 10px 28px -10px rgb(6 18 56 / 0.28); backdrop-filter: blur(16px) saturate(1.4); font-family: 'Mona Sans', ui-sans-serif, sans-serif; } .ds-mark { position: relative; display: grid; place-items: center; width: 2.375rem; height: 2.375rem; border-radius: 999px; background: conic-gradient(#2b4bff 0.35turn, rgb(10 26 74 / 0.14) 0); text-decoration: none; } .ds-mark::before { content: ''; position: absolute; inset: 2px; border-radius: inherit; background: #0a1a4a; } .ds-mark span { position: relative; font-family: 'Hubot Sans', sans-serif; font-weight: 900; font-stretch: 125%; font-size: 0.8125rem; letter-spacing: 0.04em; color: #e8efff; } .ds-nav-link { padding: 0.5rem 0.875rem; border-radius: 999px; font-size: 0.875rem; font-weight: 500; color: #42557a; text-decoration: none; transition: color 200ms ease, background-color 280ms cubic-bezier(0.23, 1, 0.32, 1); } .ds-nav-link:hover { color: #0a1a3f; } .ds-nav-link.ds-current { color: #0a1a3f; background: #e3ecf8; box-shadow: inset 0 0 0 1px rgb(43 75 255 / 0.12); } .ds-nav-link:focus-visible { outline: 2px solid #2b4bff; outline-offset: 3px; }"
+    },
+    {
+      "name": "Chip",
+      "kind": "chip",
+      "refersTo": "chip-paper",
+      "description": "Static condensed mono tech tag, wash on paper.",
+      "html": "<span class=\"ds-chip\">PostgreSQL/PostGIS</span>",
+      "css": ".ds-chip { display: inline-block; font-family: 'Martian Mono', ui-monospace, monospace; font-stretch: 87.5%; font-size: 0.6875rem; line-height: 1.5; letter-spacing: 0.01em; color: #0a1a3f; background: #e3ecf8; border-radius: 6px; padding: 0.2rem 0.5rem; }"
+    },
+    {
+      "name": "Skill Tag",
+      "kind": "chip",
+      "refersTo": "skill",
+      "description": "Body-font pill with a hairline border for the skills list.",
+      "html": "<span class=\"ds-skill\">TypeScript</span>",
+      "css": ".ds-skill { display: inline-block; font-family: 'Mona Sans', ui-sans-serif, sans-serif; font-weight: 500; font-size: 0.9375rem; line-height: 1.3; color: #0a1a3f; background: rgb(255 255 255 / 0.6); border: 1px solid #d3deee; border-radius: 999px; padding: 0.375rem 0.75rem; }"
+    },
+    {
+      "name": "Hairline Link",
+      "kind": "custom",
+      "description": "Inline link whose underline draws across on hover.",
+      "html": "<p class=\"ds-p\">Researcher in <a class=\"ds-hl\" href=\"#\">the spatial data science group</a>.</p>",
+      "css": ".ds-p { font-family: 'Mona Sans', ui-sans-serif, sans-serif; font-size: 1.0625rem; line-height: 1.7; color: #42557a; } .ds-hl { color: #2b4bff; text-decoration: none; background: linear-gradient(currentColor, currentColor) 0 100% / 0% 1.5px no-repeat, linear-gradient(rgb(43 75 255 / 0.32), rgb(43 75 255 / 0.32)) 0 100% / 100% 1px no-repeat; padding-bottom: 0.08em; transition: background-size 320ms cubic-bezier(0.23, 1, 0.32, 1); } .ds-hl:hover, .ds-hl:focus-visible { background-size: 100% 1.5px, 100% 1px; } .ds-hl:focus-visible { outline: 2px solid #2b4bff; outline-offset: 3px; border-radius: 6px; }"
+    },
+    {
+      "name": "Role Row",
+      "kind": "card",
+      "description": "Hairline-separated row: mono dates and a pulsing Now badge in a 9.5rem column, title and body beside.",
+      "html": "<article class=\"ds-role\"><p class=\"ds-dates\">SEPT 2026<br>TO PRESENT<span class=\"ds-now\"><span class=\"ds-dot\"></span>Now</span></p><div><h3 class=\"ds-item\">Spatial Data Science Researcher</h3><p class=\"ds-body\">Studying healthcare access gaps with population and facility data.</p></div></article>",
+      "css": ".ds-role { display: grid; grid-template-columns: 9.5rem minmax(0, 1fr); column-gap: 2rem; padding-block: 1.75rem 2rem; border-top: 1px solid #d3deee; background: #f2f6fb; font-family: 'Mona Sans', ui-sans-serif, sans-serif; } .ds-dates { font-family: 'Martian Mono', ui-monospace, monospace; font-stretch: 87.5%; font-size: 0.75rem; line-height: 1.6; letter-spacing: 0.02em; text-transform: uppercase; color: #42557a; } .ds-now { display: inline-flex; align-items: center; gap: 0.4rem; margin-top: 0.25rem; padding: 0.15rem 0.55rem 0.15rem 0.45rem; border-radius: 999px; background: rgb(43 75 255 / 0.09); color: #2b4bff; font-weight: 500; } .ds-dot { position: relative; width: 0.4375rem; height: 0.4375rem; border-radius: 999px; background: #2b4bff; } .ds-dot::after { content: ''; position: absolute; inset: 0; border-radius: inherit; background: #2b4bff; animation: ds-ping 2.4s cubic-bezier(0.23, 1, 0.32, 1) infinite; } @keyframes ds-ping { from { transform: scale(1); opacity: 0.55; } 70%, to { transform: scale(2.8); opacity: 0; } } @media (prefers-reduced-motion: reduce) { .ds-dot::after { animation: none; } } .ds-item { margin: 0; font-family: 'Hubot Sans', sans-serif; font-weight: 700; font-stretch: 112%; font-size: 1.5rem; line-height: 1.25; letter-spacing: -0.01em; color: #0a1a3f; } .ds-body { margin-top: 0.75rem; font-size: 1.0625rem; line-height: 1.7; color: #42557a; max-width: 66ch; }"
+    },
+    {
+      "name": "Project Row",
+      "kind": "card",
+      "description": "Deep-band row where a halftone dot screen wipes in from the left on hover or focus.",
+      "html": "<div style=\"background:#0a1a4a;padding:24px 32px\"><article class=\"ds-project\" tabindex=\"0\"><h3 class=\"ds-ptitle\">LineFinder</h3><p class=\"ds-pbody\">Mobile-first transit navigator with a custom routing engine.</p></article></div>",
+      "css": ".ds-project { position: relative; isolation: isolate; padding-block: 2rem 2.25rem; outline: none; } .ds-project::before { content: ''; position: absolute; z-index: -1; inset: 0 -1.25rem; border-radius: 1rem; background: radial-gradient(circle, rgb(168 196 255 / 0.2) 0.9px, transparent 1.4px) 0 0 / 7px 7px, linear-gradient(90deg, rgb(16 36 99 / 0.95), rgb(16 36 99 / 0.35)); mask-image: linear-gradient(90deg, #000 30%, rgb(0 0 0 / 0.55)); clip-path: inset(0 100% 0 0 round 1rem); transition: clip-path 220ms cubic-bezier(0.23, 1, 0.32, 1); } .ds-project:hover::before, .ds-project:focus-visible::before { clip-path: inset(0 0 0 0 round 1rem); transition-duration: 420ms; } .ds-ptitle { margin: 0; font-family: 'Hubot Sans', sans-serif; font-weight: 800; font-stretch: 125%; font-size: 2.25rem; line-height: 1.1; letter-spacing: -0.02em; color: #e8efff; } .ds-pbody { margin-top: 0.75rem; font-family: 'Mona Sans', ui-sans-serif, sans-serif; font-size: 1.0625rem; line-height: 1.7; color: #9fb2da; }"
+    },
+    {
+      "name": "Section Title",
+      "kind": "custom",
+      "description": "Wide heavy uppercase section headline.",
+      "html": "<h2 class=\"ds-section\">Experience</h2>",
+      "css": ".ds-section { margin: 0; font-family: 'Hubot Sans', sans-serif; font-weight: 900; font-stretch: 118%; text-transform: uppercase; font-size: 2.75rem; line-height: 1; letter-spacing: -0.02em; color: #0a1a3f; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Cyanotype Print",
+    "overview": "The page is a cold white print with deep blue bands exposed into it. Grounds alternate down the scroll (sky, paper, deep, paper, abyss), and each band is darker than the last dark one, so the visitor goes from cold air at the top into deep water at the close. The print metaphor is literal in the materials: band edges are ordered-dither bitmaps that develop once when they enter view, a fine film grain lies over everything, and project rows fill with a halftone dot screen on hover.\n\nTypography carries the identity. Hubot Sans set wide (wdth 112 to 125), heavy and uppercase for names and section titles; Mona Sans for reading; Martian Mono, condensed, for dates, tags, and small labels. Everything else stays quiet: hairline rules between rows, pill-shaped controls, a single signal blue for action. Character-cell texture (the ASCII sea, the stippled horizon, the scrambled dates) is a sparse accent, always decorative and hidden from assistive tech.\n\nThe world rejects the two-column sidebar portfolio and the near-black neon developer page. Dark grounds here are saturated navy, never neutral black.",
+    "keyCharacteristics": [
+      "Five grounds (sky, paper, deep, paper, abyss), each remapping text, rule, accent, and chip tokens.",
+      "Ordered-dither band edges, 3px cells, Bayer threshold.",
+      "Wide heavy uppercase display, condensed mono labels.",
+      "One action color per ground: signal on paper, frost on dark, white in the sky.",
+      "Hairlines, not cards. Shadows only on floating glass.",
+      "Character-cell motifs (ASCII sea, horizon, scramble) as accents, never as body content."
+    ],
+    "rules": [
+      { "name": "The Remap Rule", "body": "Components never name a ground color directly for text, rules, accent, or chips; they read the ground variables (fg, fg-soft, rule, accent, chip-bg, chip-fg) so the same component works on every ground.", "section": "colors" },
+      { "name": "The Sinking Rule", "body": "Dark bands get darker down the page: sky, then deep, then abyss. A later band is never lighter than an earlier dark one.", "section": "colors" },
+      { "name": "The Blue-Black Rule", "body": "No neutral grays or true black. Every dark is a navy; every shadow tint is rgb(6 18 56).", "section": "colors" },
+      { "name": "The Width Axis Rule", "body": "Hierarchy is set with weight and width together. Display and headline are always wide and uppercase; nothing below title is uppercase except mono labels.", "section": "typography" },
+      { "name": "The Balanced Heading Rule", "body": "Headings use balanced wrapping and paragraphs use pretty wrapping; long titles and links break anywhere rather than overflow.", "section": "typography" },
+      { "name": "The Floating Glass Rule", "body": "Shadows belong only to surfaces that float over the scroll (fixed header, its popover). Content in the flow never casts a shadow.", "section": "elevation" },
+      { "name": "The Grain Rule", "body": "A fractal-noise grain sits over the whole page at 0.13 opacity in overlay blend (0.22 in the sky), pointer-events off.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do read text, rule, accent, and chip colors from the ground variables so components work on paper, deep, and abyss.",
+      "Do join grounds with the dither band edge, painting toward the neighboring ground's color.",
+      "Do set display and section titles in Hubot Sans 900, uppercase, wdth 118 to 125.",
+      "Do use mono at wdth 87.5 for dates, tags, and small labels.",
+      "Do separate list items with 1px hairlines and keep them flat.",
+      "Do use the single ease-out curve and keep interactions between 160 and 420ms, with reduced-motion fallbacks.",
+      "Do mark character-cell and dither decoration aria-hidden."
+    ],
+    "donts": [
+      "Don't use neutral gray or true black; darks are navy (deep, abyss).",
+      "Don't put shadows on in-flow content; only floating glass is lifted.",
+      "Don't wrap rows in bordered or shadowed cards.",
+      "Don't introduce a second action hue; signal and its ground equivalents (frost, white) are the only accents.",
+      "Don't add mono kickers or eyebrows above headings, or index numbers on sections.",
+      "Don't use character-cell texture for readable content."
+    ]
+  }
+}

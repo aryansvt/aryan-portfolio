@@ -12,7 +12,7 @@ export default function Home() {
     <>
       <a
         href="#content"
-        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-70 focus:rounded-full focus:bg-white focus:px-4 focus:py-2 focus:font-semibold focus:text-ink focus:shadow-lg"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-70 focus:rounded-full focus:bg-white focus:px-4 focus:py-2 focus:font-semibold focus:text-ink focus:shadow-[0_10px_28px_-10px_rgb(6_18_56/0.28)]"
       >
         Skip to content
       </a>
