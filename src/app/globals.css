@@ -144,6 +144,11 @@
     align-self: start;
   }
 
+  /* every section stacks at the same level, so the one holding the open envelope steps up */
+  .section:has(.envelope) {
+    z-index: 3;
+  }
+
   @media (min-width: 1024px) {
     .section {
       grid-template-columns: repeat(12, minmax(0, 1fr));
@@ -231,11 +236,23 @@
     transition: background-size 320ms var(--ease-out);
   }
 
-  a.hl:hover,
   a.hl:focus-visible {
     background-size:
       100% 1.5px,
       100% 1px;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    a.hl:hover {
+      background-size:
+        100% 1.5px,
+        100% 1px;
+    }
+
+    .egg:hover {
+      color: var(--color-signal);
+      text-decoration-color: var(--color-signal);
+    }
   }
 
   span.hl {
@@ -259,7 +276,6 @@
       text-decoration-color 180ms ease;
   }
 
-  .egg:hover,
   .egg[aria-pressed="true"],
   .egg[aria-expanded="true"] {
     color: var(--color-signal);
@@ -582,6 +598,12 @@
     opacity: 0;
     transform: translateY(-6px) scale(0.97);
     transition-duration: 140ms;
+  }
+
+  @supports not selector(:popover-open) {
+    .menu {
+      display: none;
+    }
   }
 
   @starting-style {
@@ -967,7 +989,6 @@
     transition: transform 220ms var(--ease-out);
   }
 
-  .project-link:hover .label,
   .project-link:focus-visible .label {
     background-size:
       100% 1.5px,
@@ -975,6 +996,12 @@
   }
 
   @media (hover: hover) and (pointer: fine) {
+    .project-link:hover .label {
+      background-size:
+        100% 1.5px,
+        100% 1px;
+    }
+
     .project-link:hover .nudge {
       transform: translate(2px, -2px);
     }
@@ -1376,6 +1403,7 @@
   @media (prefers-reduced-motion: reduce) {
     .hl,
     .project-link .label,
+    .menu-icon path,
     .nav-indicator,
     .menu,
     .project::before {

@@ -111,8 +111,9 @@ export function SiteHeader() {
             aria-expanded={open}
             aria-controls="site-menu"
           >
+            {/* the label stays put; the icon crossing into an x shows it's open */}
             <MenuIcon />
-            {open ? "Close" : "Menu"}
+            Menu
           </button>
         </div>
       </nav>

@@ -33,9 +33,9 @@ npm run preview    # serve out/ on http://localhost:3000
 
 ### About links
 
-The highlighted words in the About text use the URLs in `aboutLinks`. If you set one to an empty string, its words keep the highlight but stop being clickable, so the site never shows a dead link.
+The blue underlined words in the About text use the URLs in `aboutLinks`. If you set one to an empty string, its words turn back into plain text and stop being clickable, so the site never shows a dead link.
 
-"watching films" isn't a link. It keeps the highlight because it opens the envelope easter egg below.
+"basketball" and "watching films" aren't links. They have a dotted underline because they open the easter eggs below.
 
 ### Site URL
 

@@ -36,6 +36,20 @@ export function fitCanvas(canvas: HTMLCanvasElement, cssW: number, cssH: number,
   return dpr;
 }
 
+// cells snapped to whole device pixels, with the css pitch derived from them so drawing and hit math agree
+export function cellGrid(cssW: number, cssH: number, baseW: number, baseH: number, dpr: number) {
+  const pw = Math.max(1, Math.round(baseW * dpr));
+  const ph = Math.max(1, Math.round(baseH * dpr));
+  return {
+    pw,
+    ph,
+    cw: pw / dpr,
+    ch: ph / dpr,
+    cols: Math.ceil(Math.round(cssW * dpr) / pw),
+    rows: Math.ceil(Math.round(cssH * dpr) / ph),
+  };
+}
+
 export function mulberry32(seed: number): () => number {
   let a = seed >>> 0;
   return () => {

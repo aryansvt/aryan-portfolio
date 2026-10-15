@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 
-import { RAMP, fitCanvas, glyphIndex, swell } from "./field";
+import { RAMP, cellGrid, fitCanvas, glyphIndex, swell } from "./field";
 
 type Ripple = { x: number; y: number; t0: number };
 
@@ -42,13 +42,11 @@ export function AsciiSea() {
 
     // every glyph pre-drawn once per tone, so a frame is only drawImage calls
     const buildAtlas = (dpr: number) => {
-      pw = Math.round(cw * dpr);
-      ph = Math.round(ch * dpr);
       atlas.width = pw * RAMP.length;
       atlas.height = ph * TONES.length;
       const a = atlas.getContext("2d");
       if (!a) return;
-      a.font = `${(ch - 1) * dpr}px ${font()}`;
+      a.font = `${ph - dpr}px ${font()}`;
       a.textAlign = "center";
       a.textBaseline = "middle";
       TONES.forEach((tone, row) => {
@@ -118,10 +116,7 @@ export function AsciiSea() {
       if (!w || !h) return;
       const dpr = fitCanvas(canvas, w, h);
       const small = w < 640;
-      cw = small ? 8 : 9;
-      ch = small ? 11 : 12;
-      cols = Math.ceil(w / cw);
-      rows = Math.ceil(h / ch);
+      ({ pw, ph, cw, ch, cols, rows } = cellGrid(w, h, small ? 8 : 9, small ? 11 : 12, dpr));
       buildAtlas(dpr);
       draw(performance.now());
     };

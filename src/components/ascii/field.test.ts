@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 
-import { BAYER4, RAMP, bayer, fitCanvas, glyphFor, mulberry32, swell } from "./field.ts";
+import { BAYER4, RAMP, bayer, cellGrid, fitCanvas, glyphFor, mulberry32, swell } from "./field.ts";
 
 test("swell stays in range and is deterministic", () => {
   for (let i = 0; i < 200; i++) {
@@ -37,4 +37,16 @@ test("seeded random repeats", () => {
   const a = mulberry32(7);
   const b = mulberry32(7);
   assert.equal(a(), b());
+});
+
+test("cell grid keeps one pitch at fractional dpr", () => {
+  for (const dpr of [1, 1.25, 1.5, 1.75, 2]) {
+    const g = cellGrid(1536, 360, 9, 12, dpr);
+    // drawing pitch and layout pitch agree, so the wake lands under the pointer
+    assert.equal(g.cw * dpr, g.pw);
+    assert.equal(g.ch * dpr, g.ph);
+    // the grid covers the whole backing store with no blank strip
+    assert.ok(g.cols * g.pw >= Math.round(1536 * dpr), `cols short at ${dpr}`);
+    assert.ok(g.rows * g.ph >= Math.round(360 * dpr), `rows short at ${dpr}`);
+  }
 });
