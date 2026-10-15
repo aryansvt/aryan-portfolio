@@ -18,7 +18,8 @@ export function About() {
           Right now, I’m an AI Engineer Intern at <TextLink href={aboutLinks.innowhyte}>Innowhyte</TextLink>, working on
           an agentic AI project, and an undergraduate researcher in{" "}
           <TextLink href={aboutLinks.michelsLab}>Dr. Alexander Michels’ spatial data science group</TextLink>, studying
-          gaps in healthcare access. Previously, I spent a year on the UT Dallas IT support desk helping students,
+          gaps in healthcare access. I also just started assisting with post-quantum cryptography research in{" "}
+          <TextLink href={aboutLinks.karimLab}>Dr. Imtiaz Karim’s SysNets Lab</TextLink>. Previously, I spent a year on the UT Dallas IT support desk helping students,
           faculty, and staff.
         </p>
         <p>

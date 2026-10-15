@@ -5,6 +5,7 @@ export const aboutLinks = {
   innowhyte: "https://www.innowhyte.ai/",
   michelsLab: "https://profiles.utdallas.edu/alexander.michels",
   goodreads: "https://www.goodreads.com/en/book/show/53658339-urban-creatures",
+  karimLab: "https://www.imtiazkarim.net/",
 };
 
 export const contact = {

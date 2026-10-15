@@ -16,6 +16,14 @@ export const projects: Project[] = [
     live: "https://linefinder-dart.vercel.app",
   },
   {
+    name: "Cinema Cosmos",
+    blurb:
+      "A 3D galaxy of about 5,000 films where every star is a film, placed by how it feels instead of its genre. Plot, themes, and poster colors are embedded and laid out with UMAP, rendered with React Three Fiber on WebGPU, and vibe search runs fully in the browser with Transformers.js.",
+    tags: ["TypeScript", "React Three Fiber", "WebGPU", "Transformers.js", "UMAP", "Next.js"],
+    github: "https://github.com/aryansvt/cinema-cosmos",
+    live: "https://cinema-cosmos.vercel.app",
+  },
+  {
     name: "Multi-CSV AI Data Assistant",
     blurb:
       "Upload multiple CSVs and ask questions in plain English. The LLM produces a validated analysis plan and Pandas does all the math, so model-generated code is never executed. Handles multi-hop joins while preventing fanout double-counting, and rejects unverified joins.",
@@ -29,12 +37,5 @@ export const projects: Project[] = [
     tags: ["Python", "LightGBM", "XGBoost", "SHAP", "Next.js", "Vercel"],
     github: "https://github.com/aryansvt/nba-shot-quality",
     live: "https://nba-shot-quality-model.vercel.app",
-  },
-  {
-    name: "Credit Default Risk Benchmark",
-    blurb:
-      "Tabular ML benchmark for credit default prediction with model comparison, threshold analysis, calibration, and SHAP explainability.",
-    tags: ["Python", "scikit-learn", "LightGBM", "XGBoost", "SHAP"],
-    github: "https://github.com/aryansvt/credit-default-risk-benchmark",
   },
 ];
