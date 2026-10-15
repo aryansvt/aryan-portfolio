@@ -12,9 +12,12 @@ export function swell(x: number, z: number, t: number): number {
   return Math.min(1, Math.max(0, (v + 1.13) / 2.26));
 }
 
+export function glyphIndex(v: number): number {
+  return Math.floor(Math.min(1, Math.max(0, v)) * (RAMP.length - 1) + 0.5);
+}
+
 export function glyphFor(v: number): string {
-  const i = Math.floor(Math.min(1, Math.max(0, v)) * (RAMP.length - 1) + 0.5);
-  return RAMP[i];
+  return RAMP[glyphIndex(v)];
 }
 
 // 4x4 ordered dither, offset by half a step so no threshold is 0 or 1
