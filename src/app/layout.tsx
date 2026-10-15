@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Archivo, Newsreader } from "next/font/google";
+import { Hubot_Sans, Martian_Mono, Mona_Sans } from "next/font/google";
 
 import { CursorGlow } from "@/components/CursorGlow";
 import { contact } from "@/config/links";
@@ -7,19 +7,26 @@ import { SITE_URL, ogImage, site } from "@/config/site";
 
 import "./globals.css";
 
-// archivo carries the width axis used for the name and nav
-const archivo = Archivo({
-  variable: "--font-archivo",
+// all three carry the width axis; hubot sets the display type wide
+const hubot = Hubot_Sans({
+  variable: "--font-hubot",
   subsets: ["latin"],
   axes: ["wdth"],
   display: "swap",
 });
 
-const newsreader = Newsreader({
-  variable: "--font-newsreader",
+const mona = Mona_Sans({
+  variable: "--font-mona",
   subsets: ["latin"],
   style: ["normal", "italic"],
-  axes: ["opsz"],
+  axes: ["wdth"],
+  display: "swap",
+});
+
+const martian = Martian_Mono({
+  variable: "--font-martian",
+  subsets: ["latin"],
+  axes: ["wdth"],
   display: "swap",
 });
 
@@ -51,8 +58,8 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0d090e",
-  colorScheme: "dark",
+  themeColor: "#2b4bff",
+  colorScheme: "light",
 };
 
 const person = {
@@ -68,10 +75,11 @@ const person = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${archivo.variable} ${newsreader.variable}`}>
+    <html lang="en" className={`${hubot.variable} ${mona.variable} ${martian.variable}`}>
       <body>
         <CursorGlow />
         {children}
+        <div className="grain" aria-hidden="true" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(person).replace(/</g, "\\u003c") }}
