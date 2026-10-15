@@ -73,13 +73,13 @@ export function AsciiSea() {
         const tone = depth < 0.3 ? 0 : 1;
 
         for (let c = 0; c < cols; c++) {
-          let v = swell(c / cols, z, t) ** 1.7 * (0.18 + z * 0.82);
+          let v = swell(c / cols, z, t) ** 1.5 * (0.22 + z * 0.85);
 
           for (const p of ripples) {
             const age = (now - p.t0) / 1000;
             const d = Math.hypot(c * cw + cw / 2 - p.x, (cy - p.y) * 1.7);
             const ring = d - age * 220;
-            v += 0.55 * Math.exp(-age * 2.4) * Math.exp(-(ring * ring) / 900);
+            v += 0.85 * Math.exp(-age * 2.2) * Math.exp(-(ring * ring) / 1100);
           }
 
           const i = glyphIndex(v);

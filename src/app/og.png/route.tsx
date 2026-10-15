@@ -3,21 +3,29 @@ import { join } from "node:path";
 
 import { ImageResponse } from "next/og";
 
+import { RAMP, glyphIndex, swell } from "@/components/ascii/field";
 import { ogImage, site } from "@/config/site";
 
 // a route handler instead of opengraph-image so the export writes out/og.png with an extension
 export const dynamic = "force-static";
 
-// the three areas from the about text, drawn as stations on a line
-const stops = ["AI engineering", "Data science", "Full-stack development"];
+// the hero sea, frozen: same field, same ramp
+const ROWS = 9;
+const COLS = 150;
+const sea = Array.from({ length: ROWS }, (_, r) => {
+  const z = ((r + 1) / ROWS) ** 1.5;
+  let line = "";
+  for (let c = 0; c < COLS; c++) line += RAMP[glyphIndex(swell(c / COLS, z, 2.2) ** 1.5 * (0.22 + z * 0.85))];
+  return { line, alpha: 0.3 + z * 0.7, tone: r < ROWS * 0.3 ? "#e8efff" : "#a8c4ff" };
+});
 
 export async function GET() {
   // static ttf instances, satori can't read variable woff2
   const dir = join(process.cwd(), "src/app/_og");
-  const [expanded, sans, serif] = await Promise.all([
-    readFile(join(dir, "archivo-expanded-800.ttf")),
-    readFile(join(dir, "archivo-500.ttf")),
-    readFile(join(dir, "newsreader-400.ttf")),
+  const [display, body, mono] = await Promise.all([
+    readFile(join(dir, "hubot-expanded-900.ttf")),
+    readFile(join(dir, "mona-500.ttf")),
+    readFile(join(dir, "martian-400.ttf")),
   ]);
 
   return new ImageResponse(
@@ -27,71 +35,62 @@ export async function GET() {
           width: "100%",
           height: "100%",
           display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          padding: "0 96px",
-          backgroundColor: "#0d090e",
-          backgroundImage:
-            "radial-gradient(circle at 0% 0%, rgba(75,29,94,0.6), rgba(13,9,14,0) 55%), radial-gradient(circle at 100% 100%, rgba(142,36,70,0.32), rgba(13,9,14,0) 50%)",
+          flexDirection: "column",
+          backgroundImage: "linear-gradient(180deg, #2b4bff 0%, #1b36cc 48%, #0a1a4a 76%, #081540 100%)",
         }}
       >
-        <div style={{ display: "flex", flexDirection: "column" }}>
+        <div style={{ display: "flex", flexDirection: "column", padding: "60px 80px 0" }}>
           <div
             style={{
               display: "flex",
               flexDirection: "column",
-              fontFamily: "Archivo Expanded",
-              fontSize: 138,
-              lineHeight: 0.92,
-              letterSpacing: "-0.015em",
-              color: "#efe6ec",
+              fontFamily: "Hubot Sans",
+              fontSize: 112,
+              lineHeight: 0.9,
+              letterSpacing: "-0.025em",
+              color: "#f4f7ff",
             }}
           >
-            <span>Aryan</span>
-            <span>Achar</span>
+            <span>ARYAN</span>
+            <span>ACHAR</span>
           </div>
-          <div style={{ marginTop: 34, fontFamily: "Archivo", fontSize: 36, color: "#f1b8c8" }}>{site.title}</div>
+          <div style={{ marginTop: 28, fontFamily: "Mona Sans", fontSize: 32, color: "#ffffff" }}>{site.title}</div>
           <div
             style={{
-              marginTop: 12,
-              maxWidth: 560,
-              fontFamily: "Newsreader",
-              fontSize: 31,
-              lineHeight: 1.35,
-              color: "#a99aa7",
+              marginTop: 10,
+              maxWidth: 720,
+              fontFamily: "Mona Sans",
+              fontSize: 28,
+              lineHeight: 1.4,
+              color: "#dce6ff",
             }}
           >
             {site.tagline}
           </div>
         </div>
 
-        <div style={{ display: "flex", position: "relative", flexDirection: "column", gap: 58 }}>
+        <div style={{ display: "flex", flexDirection: "column", marginTop: "auto", paddingBottom: 18 }}>
           <div
             style={{
-              position: "absolute",
-              left: 9,
-              top: 12,
-              bottom: 12,
-              width: 4,
-              borderRadius: 4,
-              backgroundImage: "linear-gradient(to bottom, #f1b8c8, #8e2446 60%, #2e2033)",
+              height: 1,
+              marginBottom: 10,
+              backgroundImage: "linear-gradient(90deg, rgba(232,239,255,0), rgba(232,239,255,0.65) 20%, rgba(232,239,255,0.65) 80%, rgba(232,239,255,0))",
             }}
           />
-          {stops.map((label, i) => (
-            <div key={label} style={{ display: "flex", alignItems: "center", gap: 26 }}>
-              <div
-                style={{
-                  width: 22,
-                  height: 22,
-                  borderRadius: 22,
-                  backgroundColor: i === 0 ? "#f1b8c8" : "#0d090e",
-                  border: `4px solid ${i === 0 ? "#f1b8c8" : "#8e2446"}`,
-                  boxShadow: i === 0 ? "0 0 0 8px rgba(142,36,70,0.5)" : "none",
-                }}
-              />
-              <div style={{ fontFamily: "Archivo", fontSize: 30, color: i === 0 ? "#efe6ec" : "#a99aa7" }}>
-                {label}
-              </div>
+          {sea.map((row, i) => (
+            <div
+              key={i}
+              style={{
+                display: "flex",
+                whiteSpace: "pre",
+                fontFamily: "Martian Mono",
+                fontSize: 12,
+                lineHeight: 1.2,
+                color: row.tone,
+                opacity: row.alpha,
+              }}
+            >
+              {row.line}
             </div>
           ))}
         </div>
@@ -101,9 +100,9 @@ export async function GET() {
       width: ogImage.width,
       height: ogImage.height,
       fonts: [
-        { name: "Archivo Expanded", data: expanded, weight: 800, style: "normal" },
-        { name: "Archivo", data: sans, weight: 500, style: "normal" },
-        { name: "Newsreader", data: serif, weight: 400, style: "normal" },
+        { name: "Hubot Sans", data: display, weight: 900, style: "normal" },
+        { name: "Mona Sans", data: body, weight: 500, style: "normal" },
+        { name: "Martian Mono", data: mono, weight: 400, style: "normal" },
       ],
     },
   );

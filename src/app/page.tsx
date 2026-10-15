@@ -23,7 +23,7 @@ export default function Home() {
           <About />
           <Experience />
         </div>
-        <div data-ground="deep" className="relative pb-[clamp(5rem,9vw,8rem)]">
+        <div data-ground="deep" className="relative pb-[clamp(4rem,7vw,6rem)]">
           <DitherEdge color="var(--color-paper)" fade="out" className="top-0" />
           <Projects />
           <DitherEdge color="var(--color-paper)" fade="in" className="bottom-0" />

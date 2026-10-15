@@ -652,7 +652,7 @@
   }
 
   .hero-name {
-    font-size: clamp(3.5rem, 21vw, 6.5rem);
+    font-size: clamp(3rem, 18.4vw, 6.5rem);
     color: #f4f7ff;
     margin-inline-start: -0.04em;
   }
@@ -669,7 +669,8 @@
 
   @media (min-width: 640px) {
     .hero-name {
-      font-size: clamp(3.5rem, 9.35vw, 9.25rem);
+      /* one line that never outgrows the 76rem column */
+      font-size: min(9.1vw, 7.6rem);
     }
 
     .hero-name .line {
@@ -749,7 +750,7 @@
     position: absolute;
     z-index: 1;
     inset-inline: 0;
-    height: 28px;
+    height: 42px;
     pointer-events: none;
   }
 
@@ -1033,7 +1034,7 @@
     background-image: var(--grain);
     background-size: 200px;
     mix-blend-mode: overlay;
-    opacity: 0.1;
+    opacity: 0.13;
   }
 
   /* easter egg: basketball cursor and swish */

@@ -5,6 +5,8 @@ import { useCallback, useEffect, useId, useLayoutEffect, useRef, useState } from
 // space kept between the envelope and the viewport edges, and between it and the words
 const GUTTER = 16;
 const GAP = 4;
+// the fixed header pill covers the top of the viewport
+const HEADER = 84;
 
 // just past the longest closing animation in globals.css
 const CLOSE_MS = 250;
@@ -105,18 +107,18 @@ function Defs({ p }: { p: string }) {
         </linearGradient>
 
         <linearGradient id={`${p}-lining`} x1="0" y1="0" x2="0" y2="135" gradientUnits="userSpaceOnUse">
-          <stop offset="0" stopColor="#5e112b" />
-          <stop offset="0.45" stopColor="#3a0a1b" />
-          <stop offset="1" stopColor="#14030a" />
+          <stop offset="0" stopColor="#1a2a66" />
+          <stop offset="0.45" stopColor="#0d1742" />
+          <stop offset="1" stopColor="#040a1c" />
         </linearGradient>
         <linearGradient id={`${p}-lining-flap`} x1="0" y1="12" x2="0" y2="96" gradientUnits="userSpaceOnUse">
-          <stop offset="0" stopColor="#761838" />
-          <stop offset="1" stopColor="#2c0713" />
+          <stop offset="0" stopColor="#21337a" />
+          <stop offset="1" stopColor="#070f2e" />
         </linearGradient>
-        {/* uneven vertical folds, like the curtains at Club Silencio */}
+        {/* uneven vertical folds, like velvet curtains */}
         <linearGradient id={`${p}-fold`} x1="0" y1="0" x2="1" y2="0">
           <stop offset="0" stopColor="#000" stopOpacity="0.32" />
-          <stop offset="0.55" stopColor="#ff8fae" stopOpacity="0.08" />
+          <stop offset="0.55" stopColor="#a8c4ff" stopOpacity="0.08" />
           <stop offset="1" stopColor="#000" stopOpacity="0.32" />
         </linearGradient>
         <pattern id={`${p}-folds`} width="26" height="140" patternUnits="userSpaceOnUse">
@@ -126,26 +128,26 @@ function Defs({ p }: { p: string }) {
         </pattern>
 
         <radialGradient id={`${p}-seal`} cx="0.34" cy="0.28" r="0.85">
-          <stop offset="0" stopColor="#9b2a48" />
-          <stop offset="0.35" stopColor="#6a1731" />
-          <stop offset="0.75" stopColor="#3a0a1a" />
-          <stop offset="1" stopColor="#22050f" />
+          <stop offset="0" stopColor="#4a5a8f" />
+          <stop offset="0.35" stopColor="#1f2a55" />
+          <stop offset="0.75" stopColor="#0b1230" />
+          <stop offset="1" stopColor="#05081a" />
         </radialGradient>
         <linearGradient id={`${p}-seal-rim`} x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stopColor="#ffc2d1" stopOpacity="0.6" />
-          <stop offset="0.45" stopColor="#ffc2d1" stopOpacity="0.06" />
+          <stop offset="0" stopColor="#c8d6ff" stopOpacity="0.6" />
+          <stop offset="0.45" stopColor="#c8d6ff" stopOpacity="0.06" />
           <stop offset="0.55" stopColor="#000" stopOpacity="0.1" />
           <stop offset="1" stopColor="#000" stopOpacity="0.6" />
         </linearGradient>
         <radialGradient id={`${p}-seal-press`} cx="0.66" cy="0.7" r="0.8">
-          <stop offset="0" stopColor="#5b1429" />
-          <stop offset="1" stopColor="#2a0712" />
+          <stop offset="0" stopColor="#1a2550" />
+          <stop offset="1" stopColor="#060b20" />
         </radialGradient>
         {/* the stamped disc is pressed in, so it's shaded top left and lit bottom right */}
         <linearGradient id={`${p}-seal-bevel`} x1="0" y1="0" x2="1" y2="1">
           <stop offset="0" stopColor="#000" stopOpacity="0.65" />
           <stop offset="0.5" stopColor="#000" stopOpacity="0" />
-          <stop offset="1" stopColor="#ffc2d1" stopOpacity="0.45" />
+          <stop offset="1" stopColor="#c8d6ff" stopOpacity="0.45" />
         </linearGradient>
 
         <clipPath id={`${p}-seal-top`}>
@@ -183,11 +185,11 @@ function Seal({ p }: { p: string }) {
       <circle cx="108" cy="85" r="5.9" fill={`url(#${p}-seal-press)`} />
       <circle cx="108" cy="85" r="5.9" fill="none" stroke={`url(#${p}-seal-bevel)`} strokeWidth="0.9" />
       <g fill="none" strokeLinecap="round" strokeWidth="0.75">
-        <g stroke="#ffb8c9" strokeOpacity="0.3" transform="translate(0.3 0.3)">
+        <g stroke="#c8d6ff" strokeOpacity="0.3" transform="translate(0.3 0.3)">
           <circle cx="105.6" cy="84.8" r="1.4" />
           <path d={KEY} />
         </g>
-        <g stroke="#140309">
+        <g stroke="#03061a">
           <circle cx="105.6" cy="84.8" r="1.4" />
           <path d={KEY} />
         </g>
@@ -196,7 +198,7 @@ function Seal({ p }: { p: string }) {
       <ellipse cx="104.3" cy="79.2" rx="2.7" ry="1.05" fill="#fff" opacity="0.3" transform="rotate(-38 104.3 79.2)" />
       <circle cx="102.6" cy="81.2" r="0.5" fill="#fff" opacity="0.45" />
       <ellipse cx="101.7" cy="86" rx="1.3" ry="0.5" fill="#fff" opacity="0.22" transform="rotate(-70 101.7 86)" />
-      <ellipse cx="111.5" cy="91.2" rx="2.6" ry="0.8" fill="#ffc2d1" opacity="0.14" transform="rotate(-28 111.5 91.2)" />
+      <ellipse cx="111.5" cy="91.2" rx="2.6" ry="0.8" fill="#c8d6ff" opacity="0.14" transform="rotate(-28 111.5 91.2)" />
     </>
   );
 }
@@ -246,7 +248,7 @@ function Flap({ p }: { p: string }) {
           <path
             d={LINING_IN}
             fill="none"
-            stroke="#ff9fb8"
+            stroke="#a8c4ff"
             strokeOpacity="0.12"
             strokeWidth="0.6"
           />
@@ -298,7 +300,7 @@ function Front({ p }: { p: string }) {
             <path
               d={`M${CRACK}`}
               fill="none"
-              stroke="#ffc2d1"
+              stroke="#c8d6ff"
               strokeOpacity="0.32"
               strokeWidth="0.6"
               strokeLinejoin="round"
@@ -360,7 +362,7 @@ export function FilmEnvelope({ children }: { children: React.ReactNode }) {
         Math.max(words.left + words.width / 2 - width / 2, GUTTER),
         viewport - GUTTER - width,
       );
-      const above = words.top - GAP - GUTTER;
+      const above = words.top - GAP - HEADER;
       const below = window.innerHeight - words.bottom - GAP - GUTTER;
       const side = above >= height || above >= below ? "top" : "bottom";
       const top = side === "top" ? words.top - GAP - height : words.bottom + GAP;

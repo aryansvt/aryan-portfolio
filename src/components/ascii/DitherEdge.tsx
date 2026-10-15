@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 
 import { bayer } from "./field";
 
-const PIXEL = 4;
+const PIXEL = 3;
 const DEVELOP_MS = 700;
 
 type DitherEdgeProps = {

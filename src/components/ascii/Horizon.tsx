@@ -24,7 +24,7 @@ export function Horizon() {
 
       const rnd = mulberry32(7);
       const line = h * 0.68;
-      const count = Math.round(w * 0.6);
+      const count = Math.round(w * 1.1);
 
       for (let i = 0; i < count; i++) {
         const x = rnd() * w;
@@ -32,9 +32,9 @@ export function Horizon() {
         const b = (x - w * 0.62) / w;
         const peak = Math.exp(-a * a * 28) * h * 0.55 + Math.exp(-b * b * 90) * h * 0.28;
         const up = rnd() < 0.62;
-        const y = up ? line - rnd() ** 2.2 * peak : line + rnd() ** 3 * h * 0.27;
+        const y = up ? line - rnd() ** 1.8 * peak : line + rnd() ** 3.2 * h * 0.27;
         const size = rnd() < 0.85 ? 1 : 1.6;
-        ctx.globalAlpha = 0.25 + rnd() * 0.6;
+        ctx.globalAlpha = 0.3 + rnd() * 0.65;
         ctx.fillStyle = rnd() < 0.2 ? "#a8c4ff" : "#e8efff";
         ctx.fillRect(x, y, size, size);
       }
