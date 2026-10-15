@@ -373,6 +373,12 @@
         animation-timeline: view();
         animation-range: entry 0% entry 38%;
       }
+
+      /* section titles rise out of a mask, like the name in the hero */
+      .t-section.reveal {
+        animation-name: title-rise;
+        animation-range: entry 10% entry 70%;
+      }
     }
   }
 
@@ -504,8 +510,8 @@
     opacity: 0;
     transform: translateX(var(--x, 0px));
     transition:
-      transform 320ms var(--ease-out),
-      width 320ms var(--ease-out),
+      transform 280ms var(--ease-out),
+      width 280ms var(--ease-out),
       opacity 200ms ease;
   }
 
@@ -900,7 +906,7 @@
   @media (hover: hover) and (pointer: fine) {
     .project:hover::before {
       clip-path: inset(0 0 0 0 round 1rem);
-      transition: clip-path 520ms var(--ease-out);
+      transition: clip-path 420ms var(--ease-out);
     }
   }
 
@@ -1383,6 +1389,17 @@
   from {
     opacity: 0;
     translate: 0 14px;
+  }
+}
+
+@keyframes title-rise {
+  from {
+    clip-path: inset(0 0 100% 0);
+    translate: 0 0.4em;
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+    translate: 0 0;
   }
 }
 
