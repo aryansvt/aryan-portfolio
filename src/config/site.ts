@@ -3,7 +3,7 @@
 export const site = {
   name: "Aryan Achar",
   title: "Software Engineer",
-  tagline: "I build models, tools, and apps that turn ideas into working products.",
+  tagline: "Building models, tools, and apps that turn ideas into working products.",
   description:
     "Aryan Achar is a software engineer and Computer Science student at UT Dallas working across AI engineering, data science, and full-stack development.",
 };

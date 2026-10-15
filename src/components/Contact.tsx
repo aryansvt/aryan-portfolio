@@ -14,8 +14,9 @@ export function Contact() {
         <h2 id="contact-title" className="t-display close-title reveal">
           Say hi.
         </h2>
-        <p className="reveal mt-6 max-w-[34rem] text-[clamp(1.0625rem,1.6vw,1.375rem)] leading-normal text-(--fg-soft)">
-          I’m always up for talking about a project, research, or a good film.
+        <p className="reveal mt-6 max-w-[40rem] text-[clamp(1.0625rem,1.6vw,1.375rem)] leading-normal text-(--fg-soft)">
+          Currently open to internship opportunities in software engineering, AI, and data science. Feel free to reach
+          out.
         </p>
         <a href={`mailto:${contact.email}`} className="hl close-email reveal mt-8 inline-block">
           {contact.email}
