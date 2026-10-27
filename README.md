@@ -30,7 +30,7 @@ npm run preview    # serve out/ on http://localhost:3000
 | Hero, contact close | `src/components/Hero.tsx`, `src/components/Contact.tsx` |
 | ASCII sea, dither edges | `src/components/ascii/` |
 | Social preview image | `src/app/og.png/route.tsx` |
-| Resume PDF | `public/PortfolioResumeNoGPA.pdf` |
+| Resume PDF | `public/Aryan-Achar-Resume.pdf` |
 
 ### Projects and the archive
 

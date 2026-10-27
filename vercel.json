@@ -1,4 +1,5 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "redirects": [{ "source": "/aryan-achar-resume.pdf", "destination": "/PortfolioResumeNoGPA.pdf", "permanent": false }]
+  "redirects": [{ "source": "/PortfolioResumeNoGPA.pdf", "destination": "/Aryan-Achar-Resume.pdf", "permanent": false }],
+  "rewrites": [{ "source": "/aryan-achar-resume.pdf", "destination": "/Aryan-Achar-Resume.pdf" }]
 }

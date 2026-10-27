@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { existsSync, readFileSync, readdirSync, statSync } from "node:fs";
+import { readFileSync, readdirSync, statSync } from "node:fs";
 import { join } from "node:path";
 
 import { resumePath } from "../src/config/links.ts";
@@ -38,10 +38,10 @@ test("archive dates read like the experience dates", () => {
   assert.equal(monthYear("2026-01"), "Jan 2026");
 });
 
-test("resume links point at the new pdf and the old one is gone", () => {
-  assert.equal(resumePath, "/PortfolioResumeNoGPA.pdf");
-  assert.ok(existsSync(join("public", resumePath)));
-  assert.ok(!existsSync("public/aryan-achar-resume.pdf"));
+test("resume links point at the one pdf in public", () => {
+  assert.equal(resumePath, "/Aryan-Achar-Resume.pdf");
+  // exact names, since windows and macos would call the old lowercase file a match
+  assert.deepEqual(readdirSync("public").filter((f) => f.endsWith(".pdf")), ["Aryan-Achar-Resume.pdf"]);
 });
 
 test("the next up note lives in config, not in about", () => {
@@ -69,9 +69,13 @@ test("reduced motion stops the project hover wipe", () => {
   assert.match(reduce, /\.project:hover::before/);
 });
 
-test("the old resume url still lands on the new pdf", () => {
-  const { redirects } = JSON.parse(read("vercel.json"));
-  assert.ok(redirects.some((r) => r.source === "/aryan-achar-resume.pdf" && r.destination === resumePath));
+test("both old resume urls land on the current pdf without looping", () => {
+  const { redirects = [], rewrites = [] } = JSON.parse(read("vercel.json"));
+  for (const old of ["/aryan-achar-resume.pdf", "/PortfolioResumeNoGPA.pdf"]) {
+    assert.ok([...redirects, ...rewrites].some((r) => r.source === old && r.destination === resumePath), old);
+  }
+  // vercel matches redirect sources ignoring case, so none may also catch the live file
+  for (const r of redirects) assert.notEqual(r.source.toLowerCase(), resumePath.toLowerCase());
 });
 
 test("about mentions the sysnets lab, experience does not", () => {

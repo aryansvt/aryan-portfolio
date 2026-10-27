@@ -42,7 +42,7 @@ The old plum and wine, serif, two-column sidebar design is retired. Do not bring
 Name: Aryan Achar. Title: Software Engineer. First-person, friendly copy ("Hi! I'm Aryan"). Fonts are Hubot Sans, Mona Sans, and Martian Mono.
 
 ## Evidence on Hand
-Real projects with GitHub links and some live demos (Breadcrumbs, LineFinder, Cinema Cosmos, NBA Shot Quality Model), one real award (Breadcrumbs won the Vultr track at HackTX 2026), a resume PDF (`public/PortfolioResumeNoGPA.pdf`), real roles (Innowhyte AI Engineer Intern, UT Dallas spatial data science research, UT Dallas OIT Support Desk). Aryan has also just started assisting with post-quantum cryptography research in Dr. Imtiaz Karim's SysNets Lab at UT Dallas; it is mentioned modestly in About and is not an Experience entry. No testimonials, customer logos, press, or usage metrics exist. Do not fabricate any.
+Real projects with GitHub links and some live demos (Breadcrumbs, LineFinder, Cinema Cosmos, NBA Shot Quality Model), one real award (Breadcrumbs won the Vultr track at HackTX 2026), a resume PDF (`public/Aryan-Achar-Resume.pdf`), real roles (Innowhyte AI Engineer Intern, UT Dallas spatial data science research, UT Dallas OIT Support Desk). Aryan has also just started assisting with post-quantum cryptography research in Dr. Imtiaz Karim's SysNets Lab at UT Dallas; it is mentioned modestly in About and is not an Experience entry. No testimonials, customer logos, press, or usage metrics exist. Do not fabricate any.
 
 ## Product Principles
 1. Substance first: every project and role states what was built and how, in specifics a skimmer can verify.

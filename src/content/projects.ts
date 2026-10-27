@@ -49,12 +49,6 @@ export const projects: Project[] = [
     github: "https://github.com/aryansvt/csv-chat-poc",
   },
   {
-    name: "Real-Time Particle Effects Engine",
-    date: "2026-05",
-    tags: ["C++", "OpenGL", "GLSL", "GLFW", "GLM", "ImGui", "CMake"],
-    github: "https://github.com/aryansvt/realtime-particle-effects-engine-revamp",
-  },
-  {
     name: "NBA Shot Quality Model",
     date: "2026-04",
     blurb:
@@ -70,8 +64,14 @@ export const projects: Project[] = [
     github: "https://github.com/aryansvt/credit-default-risk-benchmark",
   },
   {
+    name: "Real-Time Particle Effects Engine",
+    date: "2026-03",
+    tags: ["C++", "OpenGL", "GLSL", "GLFW", "GLM", "ImGui", "CMake"],
+    github: "https://github.com/aryansvt/realtime-particle-effects-engine-revamp",
+  },
+  {
     name: "Esports Stats Analyzer",
-    date: "2026-04",
+    date: "2026-02",
     tags: ["Python", "Pandas", "SQLite", "Streamlit", "Plotly"],
     github: "https://github.com/aryansvt/esports-stats-analyzer",
   },

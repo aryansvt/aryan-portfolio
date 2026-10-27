@@ -17,3 +17,10 @@ npm-debug.log*
 
 # source resumes, the shipped copy lives in public/
 /AryanResumeFinal-*.pdf
+
+# written by next dev on every run
+/AGENTS.md
+/CLAUDE.md
+
+# impeccable live server state
+/.impeccable/live/
