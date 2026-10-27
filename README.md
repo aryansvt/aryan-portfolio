@@ -20,8 +20,9 @@ npm run preview    # serve out/ on http://localhost:3000
 |---|---|
 | About text links (Innowhyte, lab pages, Goodreads) | `src/config/links.ts` |
 | Email, LinkedIn, GitHub, resume path | `src/config/links.ts` |
-| Name, title, tagline, SEO description, site URL | `src/config/site.ts` |
+| Name, title, tagline, SEO description, site URL, the About "next up" note | `src/config/site.ts` |
 | Experience, projects, skills | `src/content/*.ts` |
+| Project archive page | `src/app/archive/page.tsx` |
 | About text | `src/components/About.tsx` |
 | Film card text | `src/components/eggs/FilmEnvelope.tsx` |
 | Colors, type, grounds, and every component style | `src/app/globals.css` |
@@ -29,7 +30,15 @@ npm run preview    # serve out/ on http://localhost:3000
 | Hero, contact close | `src/components/Hero.tsx`, `src/components/Contact.tsx` |
 | ASCII sea, dither edges | `src/components/ascii/` |
 | Social preview image | `src/app/og.png/route.tsx` |
-| Resume PDF | `public/aryan-achar-resume.pdf` |
+| Resume PDF | `public/PortfolioResumeNoGPA.pdf` |
+
+### Projects and the archive
+
+Every public project lives once in `projects` in `src/content/projects.ts`, newest first, with its month as `YYYY-MM`. The archive page lists all of them. The homepage shows the four names in `featured`, in that order, and those need a `blurb`. Give a project an `award` and it gets the winner pill on the homepage and a small "Winner" tag in the archive. `npm test` checks the order, the dates, and that every featured project has a blurb.
+
+### Next up
+
+The small "Next up" line at the end of About reads `nextUp` in `src/config/site.ts`. Change the text there, or set it to an empty string to hide it.
 
 ### About links
 

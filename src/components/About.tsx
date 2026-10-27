@@ -37,7 +37,7 @@ export function About() {
         </p>
       </div>
       {site.nextUp && (
-        <p className="next-up reveal">
+        <p className="next-up t-body reveal">
           <span className="next-tag t-mono">
             <span className="next-dot" aria-hidden="true" />
             Next up

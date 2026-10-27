@@ -25,9 +25,18 @@ export function Projects() {
       <ul className="projects">
         {featured.map((project) => (
           <li key={project.name}>
-            <article className="project reveal" data-award={project.award ? "" : undefined}>
+            <article className="project reveal" data-award={project.award}>
               <div className="project-head">
-                <h3 className="project-title">{project.name}</h3>
+                {/* the award rides with the title, so on phones it lands before the links */}
+                <div className="min-w-0">
+                  <h3 className="project-title">{project.name}</h3>
+                  {project.award && (
+                    <p className="award t-mono">
+                      <TrophyIcon />
+                      {project.award}
+                    </p>
+                  )}
+                </div>
                 <div className="project-links">
                   <ProjectLink href={project.github} label="GitHub" context={`repository for ${project.name}`} />
                   {project.live && <ProjectLink href={project.live} label="Live site" context={`for ${project.name}`} />}
@@ -36,12 +45,6 @@ export function Projects() {
                   )}
                 </div>
               </div>
-              {project.award && (
-                <p className="award t-mono">
-                  <TrophyIcon />
-                  {project.award}
-                </p>
-              )}
               <p className="t-body mt-3">{project.blurb}</p>
               <Tags items={project.tags} label={`${project.name} tech stack`} />
             </article>

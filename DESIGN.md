@@ -253,7 +253,7 @@ Depth comes from ground changes, grain, and dither, not from shadows. The page i
 
 ## Shapes
 
-Two shape families. Controls are full pills (999px): buttons, header, nav links, skill tags, the "Now" badge, the monogram. Small information pieces are softly squared: chips at 6px, menu rows at 0.75rem, the halftone hover fill at 1rem, the menu panel at 1.25rem. Band edges are hard bitmap steps, never curves or waves. Rules are 1px hairlines.
+Two shape families. Controls are full pills (999px): buttons, header, nav links, skill tags, the "Now" and "Next up" badges, the monogram. The award pill uses a 1rem radius, a full pill on one line. Small information pieces are softly squared: chips at 6px, menu rows at 0.75rem, the halftone hover fill at 1rem, the menu panel at 1.25rem. Band edges are hard bitmap steps, never curves or waves. Rules are 1px hairlines.
 
 ## Components
 
@@ -282,6 +282,12 @@ Confident pills with a quick press.
 ### Rows
 - **Role:** mono dates in the label column with a pulsing signal "Now" badge for current roles; title, org, body, chips on the right.
 - **Project:** on the deep band, a halftone dot screen (7px pitch, frost 20% dots over deep-raised) wipes in from the left on hover or focus within (420ms in, 220ms out).
+- **Winning project:** keeps that halftone printed at 40% at rest, square along its bottom hairline and reaching up past the title on the first row, then brightens to full on hover (320ms in, 220ms out). An award pill sits under the title: condensed mono uppercase in the ground accent, a 10% accent fill, a 30% accent hairline, a stroke trophy, and a 1rem radius so a long award wraps soft.
+- **Next up:** the last line of About. A "Next up" pill like the "Now" badge but with a hollow dot (coming, not happening), followed by one line of body text at 0.9375rem.
+- **Archive link:** closes the Projects list under a hairline. Hubot Sans 700 in the accent with the hairline draw and a right arrow that nudges 3px.
+
+### Archive Table
+The `/archive` page opens with the sky cut short (the hero name style for the title, no sea), dithers into paper for the table, and closes on the abyss contact. The table is a real `<table>`: mono uppercase headers, mono dates in the Experience month style, Hubot Sans 700 names, chips for the stack, the bare domain with the hairline draw for live sites, and the GitHub mark. Hairlines are cell backgrounds that stop at the text, while the row hover (a white 75% tint, fine pointers only) runs 0.75rem past them with a 0.75rem radius. Below 1024px the link columns become 40px icon targets; below 768px the stack column hides and dates fold to month over year when space runs out. Rows fade up on load with a 45ms stagger capped at ten rows.
 
 ### Band Edge (signature)
 An ordered-dither canvas, 42px tall, 3px cells, painting the neighboring ground's color over this band's edge with a Bayer threshold. It develops once on first view over 700ms (cubic ease-out) and paints fully at once under reduced motion.

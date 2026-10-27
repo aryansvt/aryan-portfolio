@@ -16,12 +16,12 @@ Personal portfolio for Aryan Achar, a Computer Science student at UT Dallas work
 Serious applied engineering (a custom RAPTOR-style transit routing engine, a 3D galaxy of 5,000 films searchable by feel in the browser, validated LLM plans executed deterministically, an ML pipeline on 128K NBA shots) presented in a friendly, human voice with small crafted details. Both halves are claimed together.
 
 ## Operating Context
-Visitors arrive from a resume, LinkedIn, or an application link and often on a phone. Content is a single page: a hero with the name, title, tagline, and the resume and contact links, then four sections (About, Experience, Projects, Skills), then a contact close.
+Visitors arrive from a resume, LinkedIn, or an application link and often on a phone. The homepage is a hero with the name, title, tagline, and the resume and contact links, then four sections (About, Experience, Projects, Skills), then a contact close. A second page, `/archive`, lists every public project in a table.
 
 ## Capabilities and Constraints
 - Next.js, TypeScript, Tailwind, exported as a static site and hosted on Vercel at https://www.aryanachar.com. No server runtime or runtime data fetching.
 - Content lives in `src/content/*.ts`, `src/config/*.ts`, and `src/components/About.tsx`.
-- Single page, four sections: About, Experience, Projects, Skills.
+- Homepage with four sections (About, Experience, Projects, Skills) and four featured projects; `/archive` holds the full project list.
 - Easter eggs are intentional identity and must stay: the basketball cursor and hoop (About, "basketball") and the film envelope ("watching films"). Neither may block clicks. Both respect reduced motion. Both are restyled to the cold blue world.
 - A faint cold blue cursor glow runs for mouse users only and is off with reduced motion.
 - No em dashes or AI-sounding copy anywhere on the site.
@@ -42,7 +42,7 @@ The old plum and wine, serif, two-column sidebar design is retired. Do not bring
 Name: Aryan Achar. Title: Software Engineer. First-person, friendly copy ("Hi! I'm Aryan"). Fonts are Hubot Sans, Mona Sans, and Martian Mono.
 
 ## Evidence on Hand
-Real projects with GitHub links and some live demos (LineFinder, Cinema Cosmos, NBA Shot Quality Model), a resume PDF (`public/aryan-achar-resume.pdf`), real roles (Innowhyte AI Engineer Intern, UT Dallas spatial data science research, UT Dallas OIT Support Desk). Aryan has also just started assisting with post-quantum cryptography research in Dr. Imtiaz Karim's SysNets Lab at UT Dallas; it is mentioned modestly in About and is not an Experience entry. No testimonials, customer logos, press, or usage metrics exist. Do not fabricate any.
+Real projects with GitHub links and some live demos (Breadcrumbs, LineFinder, Cinema Cosmos, NBA Shot Quality Model), one real award (Breadcrumbs won the Vultr track at HackTX 2026), a resume PDF (`public/PortfolioResumeNoGPA.pdf`), real roles (Innowhyte AI Engineer Intern, UT Dallas spatial data science research, UT Dallas OIT Support Desk). Aryan has also just started assisting with post-quantum cryptography research in Dr. Imtiaz Karim's SysNets Lab at UT Dallas; it is mentioned modestly in About and is not an Experience entry. No testimonials, customer logos, press, or usage metrics exist. Do not fabricate any.
 
 ## Product Principles
 1. Substance first: every project and role states what was built and how, in specifics a skimmer can verify.

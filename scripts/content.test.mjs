@@ -45,10 +45,33 @@ test("resume links point at the new pdf and the old one is gone", () => {
 });
 
 test("the next up note lives in config, not in about", () => {
-  assert.match(site.nextUp, /HackUTD 2026/);
+  // any string, so clearing it to "" after the event keeps the suite green
+  assert.equal(typeof site.nextUp, "string");
   const about = read("src/components/About.tsx");
   assert.match(about, /site\.nextUp/);
   assert.doesNotMatch(about, /HackUTD/);
+});
+
+test("the archive shares as itself, not as the homepage", () => {
+  const page = read("src/app/archive/page.tsx");
+  assert.match(page, /openGraph: \{[^}]*url: "\/archive"/);
+  assert.match(page, /twitter: \{/);
+});
+
+test("one banner per page, and every page has a skip target", () => {
+  assert.doesNotMatch(read("src/app/archive/page.tsx"), /<header/);
+  assert.match(read("src/app/not-found.tsx"), /id="content"/);
+});
+
+test("reduced motion stops the project hover wipe", () => {
+  const css = read("src/app/globals.css");
+  const reduce = css.slice(css.lastIndexOf("@media (prefers-reduced-motion: reduce)"));
+  assert.match(reduce, /\.project:hover::before/);
+});
+
+test("the old resume url still lands on the new pdf", () => {
+  const { redirects } = JSON.parse(read("vercel.json"));
+  assert.ok(redirects.some((r) => r.source === "/aryan-achar-resume.pdf" && r.destination === resumePath));
 });
 
 test("about mentions the sysnets lab, experience does not", () => {
@@ -63,5 +86,5 @@ test("no em dashes in source copy", () => {
       const p = join(dir, f);
       return statSync(p).isDirectory() ? walk(p) : /\.(tsx?|css)$/.test(p) ? [p] : [];
     });
-  for (const file of walk("src")) assert.ok(!read(file).includes("—"), `em dash in ${file}`);
+  for (const file of walk("src")) assert.ok(!read(file).includes("\u2014"), `em dash in ${file}`);
 });
