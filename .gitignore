@@ -24,3 +24,8 @@ npm-debug.log*
 
 # impeccable live server state
 /.impeccable/live/
+
+# local tool settings and design references
+/.claude/
+/.codex/
+/design-refs/

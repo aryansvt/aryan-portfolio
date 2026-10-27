@@ -41,7 +41,7 @@ export default function Archive() {
               <span>Archive</span>
             </span>
           </h1>
-          <p className="hero-tagline">Every public project I’ve built, newest first.</p>
+          <p className="hero-tagline">A collection of things I’ve built, newest first.</p>
           <div className="archive-actions">
             <Link href="/" className="btn btn-ghost">
               <ArrowLeft className="nudge-back" />
