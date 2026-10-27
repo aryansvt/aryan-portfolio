@@ -1018,21 +1018,25 @@
   }
 
   .project-link .label,
-  .archive-cta .label {
+  .archive-cta .label,
+  .archive-link .label {
     background:
       linear-gradient(currentColor, currentColor) 0 100% / 0% 1.5px no-repeat,
-      linear-gradient(rgb(168 196 255 / 0.35), rgb(168 196 255 / 0.35)) 0 100% / 100% 1px no-repeat;
+      linear-gradient(color-mix(in oklab, currentColor 35%, transparent), color-mix(in oklab, currentColor 35%, transparent))
+        0 100% / 100% 1px no-repeat;
     padding-bottom: 0.1em;
     transition: background-size 320ms var(--ease-out);
   }
 
   .project-link .nudge,
-  .archive-cta .nudge {
+  .archive-cta .nudge,
+  .archive-link .nudge {
     transition: transform 220ms var(--ease-out);
   }
 
   .project-link:focus-visible .label,
-  .archive-cta:focus-visible .label {
+  .archive-cta:focus-visible .label,
+  .archive-link:focus-visible .label {
     background-size:
       100% 1.5px,
       100% 1px;
@@ -1040,13 +1044,15 @@
 
   @media (hover: hover) and (pointer: fine) {
     .project-link:hover .label,
-    .archive-cta:hover .label {
+    .archive-cta:hover .label,
+    .archive-link:hover .label {
       background-size:
         100% 1.5px,
         100% 1px;
     }
 
-    .project-link:hover .nudge {
+    .project-link:hover .nudge,
+    .archive-link:hover .nudge {
       transform: translate(2px, -2px);
     }
 
@@ -1168,6 +1174,161 @@
   @media (hover: hover) and (pointer: fine) {
     .back-top:hover .nudge {
       transform: translateY(-3px);
+    }
+  }
+
+  /* archive: the hero, cut short */
+  .archive-hero {
+    min-height: 0;
+    padding-bottom: clamp(5.5rem, 10vw, 8rem);
+  }
+
+  .archive-title {
+    font-size: clamp(2.75rem, 13vw, 7.6rem);
+  }
+
+  .archive-actions {
+    margin-top: 1.75rem;
+  }
+
+  .btn .nudge-back {
+    transition: transform 220ms var(--ease-out);
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .btn:hover .nudge-back {
+      transform: translateX(-3px);
+    }
+  }
+
+  .archive {
+    padding-block: clamp(3rem, 6vw, 5rem) clamp(5rem, 9vw, 8rem);
+  }
+
+  /* wider than the column by the row tint, so text still lines up with the title */
+  .archive-table {
+    width: calc(100% + 1.5rem);
+    margin-inline: -0.75rem;
+    border-collapse: separate;
+    border-spacing: 0;
+    text-align: left;
+  }
+
+  /* the hairline is a background so it stops at the text while the row tint runs past it */
+  .archive-table :is(th, td) {
+    padding: 1.25rem 1.25rem 1.25rem 0;
+    background: linear-gradient(var(--rule), var(--rule)) 0 100% / 100% 1px no-repeat;
+    vertical-align: baseline;
+  }
+
+  .archive-table tr > :first-child {
+    padding-left: 0.75rem;
+    border-radius: 0.75rem 0 0 0.75rem;
+    background-position: 0.75rem 100%;
+    background-size: calc(100% - 0.75rem) 1px;
+  }
+
+  .archive-table tr > :last-child {
+    padding-right: 0.75rem;
+    border-radius: 0 0.75rem 0.75rem 0;
+    background-size: calc(100% - 0.75rem) 1px;
+  }
+
+  .archive-table thead th {
+    padding-block: 0 0.875rem;
+    font-family: var(--font-mono);
+    font-variation-settings: "wdth" 87.5;
+    font-size: 0.6875rem;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    color: var(--fg-soft);
+  }
+
+  .archive-date {
+    white-space: nowrap;
+    color: var(--fg-soft);
+  }
+
+  .archive-name {
+    min-width: 9rem;
+    overflow-wrap: anywhere;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-variation-settings: "wdth" 112;
+    font-size: 1.0625rem;
+    line-height: 1.35;
+    letter-spacing: -0.01em;
+    color: var(--fg);
+  }
+
+  .archive-name .award {
+    gap: 0.3rem;
+    margin: 0 0 0 0.5rem;
+    padding: 0.05rem 0.5rem 0.05rem 0.4rem;
+    font-size: 0.625rem;
+    letter-spacing: 0.04em;
+    vertical-align: 0.15em;
+  }
+
+  .archive-name .award svg {
+    width: 0.75rem;
+    height: 0.75rem;
+  }
+
+  .col-link {
+    width: 1%;
+    white-space: nowrap;
+  }
+
+  .archive-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  .archive-table tbody tr > * {
+    transition: background-color 160ms ease;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .archive-table tbody tr:hover > * {
+      background-color: rgb(255 255 255 / 0.75);
+    }
+  }
+
+  /* phones: date, name, and two icon links with full-size targets */
+  @media (max-width: 767px) {
+    .col-stack {
+      display: none;
+    }
+
+    .archive-table :is(th, td) {
+      padding-right: 0.75rem;
+    }
+
+    .archive-link {
+      justify-content: center;
+      width: 2.75rem;
+      height: 2.75rem;
+      margin-block: -0.75rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .archive-actions {
+      animation: fade-up 600ms var(--ease-out) both 500ms;
+    }
+
+    .archive-table thead,
+    .archive-table tbody tr {
+      animation: fade-up 520ms var(--ease-out) both;
+      animation-delay: calc(480ms + var(--i, -1) * 45ms);
     }
   }
 
@@ -1509,6 +1670,7 @@
     .hl,
     .project-link .label,
     .archive-cta .label,
+    .archive-link .label,
     .menu-icon path,
     .nav-indicator,
     .menu,

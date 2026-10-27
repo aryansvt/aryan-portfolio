@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import { featured } from "@/content/projects";
 
 import { ArrowRight, ArrowUpRight, TrophyIcon } from "./icons";
@@ -46,10 +48,10 @@ export function Projects() {
           </li>
         ))}
       </ul>
-      <a href="/archive" className="archive-cta reveal">
+      <Link href="/archive" className="archive-cta reveal">
         <span className="label">View full project archive</span>
         <ArrowRight className="nudge" />
-      </a>
+      </Link>
     </Section>
   );
 }

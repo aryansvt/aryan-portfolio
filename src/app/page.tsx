@@ -4,19 +4,11 @@ import { DitherEdge } from "@/components/ascii/DitherEdge";
 import { Experience } from "@/components/Experience";
 import { Hero } from "@/components/Hero";
 import { Projects } from "@/components/Projects";
-import { SiteHeader } from "@/components/SiteHeader";
 import { Skills } from "@/components/Skills";
 
 export default function Home() {
   return (
     <>
-      <a
-        href="#content"
-        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-70 focus:rounded-full focus:bg-white focus:px-4 focus:py-2 focus:font-semibold focus:text-ink focus:shadow-[0_10px_28px_-10px_rgb(6_18_56/0.28)]"
-      >
-        Skip to content
-      </a>
-      <SiteHeader />
       <Hero />
       <main id="content">
         <div data-ground="paper" className="pb-[clamp(5rem,9vw,8rem)]">

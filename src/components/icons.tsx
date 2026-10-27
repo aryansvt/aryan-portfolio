@@ -49,6 +49,14 @@ export function ArrowRight({ className }: IconProps) {
   );
 }
 
+export function ArrowLeft({ className }: IconProps) {
+  return (
+    <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true" className={className} {...stroke}>
+      <path d="M13 8H3.5M7.5 4l-4 4 4 4" />
+    </svg>
+  );
+}
+
 export function TrophyIcon({ className }: IconProps) {
   return (
     <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true" className={className} {...stroke}>

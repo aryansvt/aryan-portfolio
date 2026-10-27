@@ -35,9 +35,9 @@ export function SiteHeader() {
         const top = document.getElementById(s.id)?.getBoundingClientRect().top ?? Number.POSITIVE_INFINITY;
         if (top <= line) index = i;
       });
-      // a short last section never reaches the line, so the bottom of the page counts
+      // a short last section never reaches the line, so the bottom of the page counts. pages without sections never do
       const atBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2;
-      setActive(atBottom ? sections.length - 1 : index);
+      setActive(atBottom && index > -1 ? sections.length - 1 : index);
     };
 
     const schedule = () => {
@@ -92,7 +92,7 @@ export function SiteHeader() {
         <div className="nav-links" ref={linksRef}>
           <span className="nav-indicator" ref={indicatorRef} aria-hidden="true" />
           {sections.map((s, i) => (
-            <a key={s.id} href={`#${s.id}`} data-i={i} className="nav-link" aria-current={i === active ? "true" : undefined}>
+            <a key={s.id} href={`/#${s.id}`} data-i={i} className="nav-link" aria-current={i === active ? "true" : undefined}>
               {s.label}
             </a>
           ))}
@@ -129,7 +129,7 @@ export function SiteHeader() {
           <ul>
             {sections.map((s, i) => (
               <li key={s.id} style={{ "--i": i } as React.CSSProperties}>
-                <a href={`#${s.id}`} className="menu-section" onClick={closeMenu}>
+                <a href={`/#${s.id}`} className="menu-section" onClick={closeMenu}>
                   {s.label}
                 </a>
               </li>
