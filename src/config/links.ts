@@ -14,4 +14,4 @@ export const contact = {
   github: "https://github.com/aryansvt",
 };
 
-export const resumePath = "/aryan-achar-resume.pdf";
+export const resumePath = "/PortfolioResumeNoGPA.pdf";

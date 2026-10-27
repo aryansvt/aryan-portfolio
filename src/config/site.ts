@@ -1,4 +1,4 @@
-// name, headline, and the url used for metadata
+// name, headline, the about "next up" note, and the url used for metadata
 
 export const site = {
   name: "Aryan Achar",
@@ -6,6 +6,8 @@ export const site = {
   tagline: "Building models, tools, and apps that turn ideas into working products.",
   description:
     "Aryan Achar is a software engineer and Computer Science student at UT Dallas working across AI engineering, data science, and full-stack development.",
+  // small line at the end of about. an empty string hides it
+  nextUp: "I’ll be at HackUTD 2026.",
 };
 
 // canonical origin for metadata, the sitemap, and the og image. aryanachar.com redirects here

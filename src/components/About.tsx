@@ -1,4 +1,5 @@
 import { aboutLinks } from "@/config/links";
+import { site } from "@/config/site";
 
 import { FilmEnvelope } from "./eggs/FilmEnvelope";
 import { HoopsToggle } from "./eggs/HoopsToggle";
@@ -35,6 +36,16 @@ export function About() {
           by Sarah Gray.
         </p>
       </div>
+      {site.nextUp && (
+        <p className="next-up reveal">
+          <span className="next-tag t-mono">
+            <span className="next-dot" aria-hidden="true" />
+            Next up
+          </span>
+          <span className="sr-only">: </span>
+          {site.nextUp}
+        </p>
+      )}
     </Section>
   );
 }

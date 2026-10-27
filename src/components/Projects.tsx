@@ -1,6 +1,6 @@
-import { projects } from "@/content/projects";
+import { featured } from "@/content/projects";
 
-import { ArrowUpRight } from "./icons";
+import { ArrowRight, ArrowUpRight, TrophyIcon } from "./icons";
 import { Section } from "./Section";
 import { Tags } from "./Tags";
 
@@ -21,22 +21,35 @@ export function Projects() {
   return (
     <Section id="projects">
       <ul className="projects">
-        {projects.map((project) => (
+        {featured.map((project) => (
           <li key={project.name}>
-            <article className="project reveal">
+            <article className="project reveal" data-award={project.award ? "" : undefined}>
               <div className="project-head">
                 <h3 className="project-title">{project.name}</h3>
                 <div className="project-links">
                   <ProjectLink href={project.github} label="GitHub" context={`repository for ${project.name}`} />
                   {project.live && <ProjectLink href={project.live} label="Live site" context={`for ${project.name}`} />}
+                  {project.devpost && (
+                    <ProjectLink href={project.devpost} label="Devpost" context={`page for ${project.name}`} />
+                  )}
                 </div>
               </div>
+              {project.award && (
+                <p className="award t-mono">
+                  <TrophyIcon />
+                  {project.award}
+                </p>
+              )}
               <p className="t-body mt-3">{project.blurb}</p>
               <Tags items={project.tags} label={`${project.name} tech stack`} />
             </article>
           </li>
         ))}
       </ul>
+      <a href="/archive" className="archive-cta reveal">
+        <span className="label">View full project archive</span>
+        <ArrowRight className="nudge" />
+      </a>
     </Section>
   );
 }
