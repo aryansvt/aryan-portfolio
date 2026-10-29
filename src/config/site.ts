@@ -7,7 +7,7 @@ export const site = {
   description:
     "Aryan Achar is a software engineer and Computer Science student at UT Dallas working across AI engineering, data science, and full-stack development.",
   // small line at the end of about. an empty string hides it
-  nextUp: "I’ll be at HackUTD 2026.",
+  nextUp: "",
 };
 
 // canonical origin for metadata, the sitemap, and the og image. aryanachar.com redirects here
